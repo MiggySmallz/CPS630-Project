@@ -50,10 +50,12 @@ img{
 #signInField {
     text-align: center;
     font-size: 50px;
+    
     margin-top: 5em;
     margin-left: 5em;
     margin-right: 5em;
-    background-color: red;
+    background-color: rgb(92, 160, 216);
     padding: 20px;
 }
+
 
