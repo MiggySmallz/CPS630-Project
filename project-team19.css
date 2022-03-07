@@ -1,0 +1,49 @@
+.container{
+    height: 100%;
+    width: 100%;
+}
+.menu-bar{
+    height: 5em;
+    width: 100%;
+    background-color: rgb(27, 21, 58);
+
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+body{margin:0px;}
+
+.menu-bar > div{
+    /* background-color: #ca4747; */
+    color: white;
+    width: 5em;
+    margin: auto;
+    text-align: center;
+    /* line-height: 75px; */
+    font-size: 20px;
+}
+
+img{
+    max-width: 7em;
+    max-height: 7em;
+    display: block;
+    background-color: transparent;
+}
+
+#item-list{
+    height: 1000px;
+    width: auto;
+    background-color: rgb(209, 165, 165);
+    margin: 0 10% 0 10%;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 20% 20% 20% 20%; 
+    grid-template-rows: 35% 10%;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px
+}
+
+#item{
+    background-color: blue;
+}
+
