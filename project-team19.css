@@ -2,6 +2,14 @@
     height: 100%;
     width: 100%;
 }
+
+a:link { text-decoration: none; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+a{color: white}
+
 .menu-bar{
     height: 5em;
     width: 100%;
@@ -23,28 +31,41 @@ body{margin:0px;}
     font-size: 20px;
 }
 
-img{
+#logo{
     max-width: 7em;
     max-height: 7em;
     display: block;
     background-color: transparent;
 }
 
-#item-list{
-    height: 1000px;
+img{
+    max-height: 200px;
     width: auto;
-    background-color: rgb(209, 165, 165);
-    margin: 0 10% 0 10%;
-    display: grid;
-    text-align: center;
-    grid-template-columns: 20% 20% 20% 20%; 
-    grid-template-rows: 35% 10%;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px
 }
 
-#item{
-    background-color: blue;
+.item{
+    /* background-color: blue; */
+    flex-direction: column;
+    height: 450px;
+    width: 400px;
+    margin: 10px;
+    
+}
+
+.item-list-parent{
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    padding: 5% 10% 0 10%;
+    background-color: rgb(214, 215, 219);
+    text-align: center;
+}
+
+.item-img{
+    background-color: rgb(255, 255, 255);
+    height: 200px;
+    width: auto;
+    text-align: center;
 }
 
 #signInField {
@@ -57,3 +78,44 @@ img{
     background-color: rgb(92, 160, 216);
     padding: 20px;
 }
+.item-desc{
+    background-color: rgb(241, 241, 241);
+    height: 250px;
+    width: auto;
+}
+
+h1{
+    margin: 0px;
+    padding: 15px 0px 65px 0px;
+}
+
+h2{
+    margin: 0px;
+    padding:15px;
+}
+
+button{
+    font-size: 20px;
+}
+
+.bottomleft {
+    position: fixed;
+    border-radius: 10px;
+    left: 0px; bottom: 0px;
+    width: 200px;
+    height:80px;
+    background-color:rgb(92, 97, 98);
+    padding: 5px;
+    display: none;
+    
+  }
+
+  .topright {
+    position: absolute;
+    right: 0px; top: 5em;
+    width: 320px;
+    /* max-height: 100vh; */
+    min-height: 207em;
+    background-color: rgb(253, 237, 237);   
+
+  }
