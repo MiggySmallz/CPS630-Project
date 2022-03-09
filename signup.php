@@ -89,7 +89,6 @@
             //if ($row['username'] === $email) {
             echo "<br>" . "Email is already being used";
         }
-            //}
         else {
             echo "<br>" . "Added to Database";
             $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
@@ -114,29 +113,7 @@
         }
 
         exit();
-
-        //echo $email . " " . $password;
     }
-
-
-
-    
-    /*
-    if (isset($_POST['email']) && isset($_POST['password'])) {
-    
-        function validate($data){
-    
-           $data = trim($data);
-    
-           $data = stripslashes($data);
-    
-           $data = htmlspecialchars($data);
-    
-           return $data;
-    
-        }
-    }
-    */
 ?>
 
 
