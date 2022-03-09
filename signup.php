@@ -41,6 +41,7 @@
         <form id="signup" action="" method="post">
 
             <div id="signInField">
+                <h2>First Time? Sign up here.</h2>
                 <label>Email:</label> <input type="text" name="email" required><br>
                 <label>Password:</label> <input type="text" name="password" required><br>
                 <input type="submit" name="signUp" value="Sign Up">
@@ -56,6 +57,10 @@
     $username = "root";
     $password = "";
     $database = "accounts";
+
+    $connect = mysqli_connect($servername, $username, $password);
+    $connect->query("CREATE DATABASE IF NOT EXISTS accounts;");
+    $connect->close();
 
     // Create connection
     $connect = mysqli_connect($servername, $username, $password, $database);
