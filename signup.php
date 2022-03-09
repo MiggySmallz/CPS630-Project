@@ -8,36 +8,35 @@
     </head>
 
     <body>
-
         <div class="menu-bar">
-            <div id="logo">
-                <img src="logo.png">
-            </div>
-            <div>
-                <a href="index.html">Home</a>
-            </div>
-            <div>
-                Types Of Services       
-            </div>
-            <div>
-                Reviews
-            </div>
-            <div>
-                Shopping Cart
-            </div>
-            <div>
-                About Us
-            </div>
-            <div>
-                Contact Us
-            </div>
-            <div>
-                <a href="signup.php">Sign Up</a>
-            </div>
-            <div>
-                Sign In
-            </div>
+        <div>
+            <a href="http://localhost/index.php"><img id="logo" src="logo.png"></a>
         </div>
+        <div>
+            <a href="http://localhost/index.php">Home</a>
+        </div>
+        <div>
+            <a href="http://localhost/types_of_services.php">Types Of Services</a>   
+        </div>
+        <div>
+            <a href="http://localhost/reviews.php">Reviews</a>
+        </div>
+        <div>
+            <a href="http://localhost/shopping_cart.php">Shopping Cart</a>
+        </div>
+        <div>
+            <a href="http://localhost/about_us.php">About Us</a>
+        </div>
+        <div>
+            <a href="http://localhost/contact_us.php">Contact Us</a>
+        </div>
+        <div>
+            <a href="http://localhost/signup.php">Sign Up</a>
+        </div>
+        <div>
+            <a href="http://localhost/signin.php">Sign In</a>
+        </div>
+    </div>
 
         <form id="signup" action="" method="post">
 
