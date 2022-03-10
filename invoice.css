@@ -1,11 +1,34 @@
-.container{
-    justify-content: center;
-    display: flex;
-    height: 100%;
-    width: 100%;
+#map{
+    height: 500px;
+    width: 600px;
+    align-content: center;
+    margin-top: 2em;
+    margin-left: 5em;
+
+
+    position: relative;
+    
+
+}    
+#add2cord, #cord2add{
+height: 100px;
+width: 500px;
+text-align: center;
+margin: auto;
 }
 
-a:link { text-decoration: none; }
+#container{
+/* align-content: center;
+text-align: center; */
+
+justify-content: center;
+display: flex;
+height: 100%;
+width: 100%;
+
+}
+
+
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
@@ -21,25 +44,14 @@ a{color: white}
     flex-wrap: nowrap;
 }
 
-#results{
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-    /* background-color: rgb(221, 41, 65); */
-    /* text-align: center; */
-    max-height: 1500px;
-    width: 1200px;
-}
-
 body{margin:0px;}
 
 .menu-bar > div{
-    /* background-color: #ca4747; */
+
     color: white;
     width: 5em;
     margin: auto;
     text-align: center;
-    /* line-height: 75px; */
     font-size: 20px;
 }
 
@@ -55,6 +67,16 @@ body{margin:0px;}
     width: 1200px;
     /* position: absolute; */
     text-align: center;
+    margin: 0;
+
+}
+
+th{
+    padding: 15px;
+  }
+
+td{
+    padding: 10px 30px 10px 30px;
 
 }
 
@@ -67,18 +89,5 @@ body{margin:0px;}
     justify-content: center;
 }
 
-.shopping-info{
-    position: relative;
-    margin-left: 7em;
-    display: flex;
-    align-items: center;
-}
 
-th{
-    padding: 15px;
-  }
 
-td{
-    padding: 10px 30px 10px 30px;
-
-}

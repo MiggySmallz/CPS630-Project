@@ -142,6 +142,9 @@
     <div class="bottomleft">
         <h4 style="color: white; text-align: center;">Item Has Been Added To Your Cart</h4>
     </div>
+    <div class="max-items">
+        <h4 style="color: white; text-align: center;">Max quantity is 5 items</h4>
+    </div>
     <div class="topright" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
         <h3 style="text-align: center;"><u>Shopping Cart</u></h3>
     </div>

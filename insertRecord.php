@@ -17,6 +17,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// $result = $conn->query("SELECT * FROM `stock` WHERE id = $item_id");
+
+// while($data = $result->fetch_assoc()) {
+//     $name = $data['name'];
+//     $price = $data['price'];
+// }
+
 $result = mysqli_query($conn,"SELECT * FROM items WHERE id = $item_id");
 if ($result-> num_rows == 0) {
 
@@ -44,10 +51,7 @@ else{
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-    }
-
-    
-    
+    }    
 }
 
 
