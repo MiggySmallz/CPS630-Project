@@ -8,6 +8,8 @@ $conn = new mysqli($servername, $username, $password);
 $conn->query("CREATE DATABASE cps630;");
 $conn->close();
 
+$sql = "CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(100), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))";
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
@@ -15,6 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$conn->query("CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), city_code VARCHAR(50), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))");
 $conn->query("CREATE TABLE items (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
 $conn->query("CREATE TABLE stock (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
 

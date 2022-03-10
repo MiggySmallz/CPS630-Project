@@ -31,12 +31,11 @@ a{color: white}
 body{margin:0px;}
 
 .menu-bar > div{
-    /* background-color: #ca4747; */
+
     color: white;
     width: 5em;
     margin: auto;
     text-align: center;
-    /* line-height: 75px; */
     font-size: 20px;
 }
 
@@ -63,7 +62,7 @@ img{
 }
 
 .item{
-    /* background-color: blue; */
+
     flex-direction: column;
     height: 450px;
     width: 400px;
@@ -128,11 +127,22 @@ button {
     display: none;  
 }
 
+.max-items {
+    position: fixed;
+    border-radius: 10px;
+    left: 0px; bottom: 0px;
+    width: 200px;
+    height:80px;
+    background-color:rgb(179, 67, 39);
+    padding: 5px;
+    display: none;
+    
+  }
+
 .topright {
     position: absolute;
     right: 0px; top: 5em;
     width: 320px;
-    /* max-height: 100vh; */
     min-height: 207em;
     background-color: rgb(253, 237, 237);   
 }
