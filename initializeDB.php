@@ -8,7 +8,6 @@ $conn = new mysqli($servername, $username, $password);
 $conn->query("CREATE DATABASE cps630;");
 $conn->close();
 
-$sql = "CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(100), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -20,6 +19,12 @@ if ($conn->connect_error) {
 $conn->query("CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), city_code VARCHAR(50), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))");
 $conn->query("CREATE TABLE items (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
 $conn->query("CREATE TABLE stock (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
+
+
+
+
+
+$conn->query("INSERT INTO `users`(`user_id`, `name`, `tel_no`, `email`, `address`, `city_code`, `login_id`, `password`, `balance`) VALUES (1, 'Albert', 2147483647, 'albert@gmail.com', '8 Sunnylea Ave W, Etobicoke, ON M8Y 2J7', 1, 'pass' , 0)" );
 
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (0, 'ASUS RTX 3070', '1549.15', 1)" );
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (1, 'ASUS VivoBook 15', '679.99', 1)" );
