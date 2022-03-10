@@ -10,7 +10,16 @@ a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 a{color: white}
 
-.menu-bar{
+.menu-bar {
+    height: 5em;
+    width: 100%;
+    background-color: rgb(27, 21, 58);
+
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.menu-signin {
     height: 5em;
     width: 100%;
     background-color: rgb(27, 21, 58);
@@ -22,6 +31,16 @@ a{color: white}
 body{margin:0px;}
 
 .menu-bar > div{
+    /* background-color: #ca4747; */
+    color: white;
+    width: 5em;
+    margin: auto;
+    text-align: center;
+    /* line-height: 75px; */
+    font-size: 20px;
+}
+
+.menu-signin > div{
     /* background-color: #ca4747; */
     color: white;
     width: 5em;

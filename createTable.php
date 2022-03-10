@@ -12,6 +12,6 @@
     }
     echo "Connected successfully";
 
-    $sql = "CREATE TABLE users (username VARCHAR(50), password VARCHAR(50))";
+    $sql = "CREATE TABLE users (username VARCHAR(50), password VARCHAR(50), name VARCHAR(50), phone VARCHAR(50), address VARCHAR(50), email VARCHAR(50))";
     $result = mysqli_query($connect, $sql);
 ?>

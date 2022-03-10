@@ -9,27 +9,6 @@
 
         <div class="menu-bar">
             <div>
-                <a href="index.php"><img id="logo" src="logo.png"></a>
-            </div>
-            <div>
-                <a href="index.php">Home</a>
-            </div>
-            <div>
-                <a href="types_of_services.php">Types Of Services</a>   
-            </div>
-            <div>
-                <a href="reviews.php">Reviews</a>
-            </div>
-            <div>
-                <a href="shopping_cart.php">Shopping Cart</a>
-            </div>
-            <div>
-                <a href="about_us.php">About Us</a>
-            </div>
-            <div>
-                <a href="contact_us.php">Contact Us</a>
-            </div>
-            <div>
                 <a href="signup.php">Sign Up</a>
             </div>
             <div>
@@ -41,9 +20,9 @@
 
             <div id="signInField">
                 <h2>Already have an account? Sign in here.</h2>
-                <label>Email:</label> <input type="text" name="email" required><br>
-                <label>Password:</label> <input type="text" name="password" required><br>
-                <input type="submit" name="signUp" value="Sign Up">
+                <label>Username:</label> <input type="text" name="email" required><br>
+                <label>Password:</label> <input type="password" name="password" required><br>
+                <input type="submit" name="signUp" value="Log in">
             </div>
         </form>
 
@@ -67,12 +46,12 @@
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully";
+    //echo "Connected successfully" . "<br>";
+
+    session_start(); 
 ?>
 
 <?php 
-    session_start(); 
-
     if (isset($_POST['signUp'])) {
         function validate($data) {
             $data = trim($data);
@@ -87,15 +66,22 @@
         $sql = "SELECT * FROM users WHERE username='$email' AND password='$password'";
         $result = mysqli_query($connect, $sql);
 
+        function redirect($url, $permanent = false) {
+            if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+            exit();
+        }
+
         if (mysqli_num_rows($result) === 1) {
-            echo "<br>" . "You have logged in.";
             while ($row = $result -> fetch_assoc()) {
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['password'] = $row['password'];
+                if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['password'] = $row['password'];
+                    redirect("index.php");
+                }
             }
         }
         else {
-            echo "<be>" . "Your email or password is incorrect.";
+            echo "<br>" . "Your email or password is incorrect.";
         }
 
         $sql = "SELECT username, password FROM users";
@@ -111,7 +97,5 @@
         } else {
             echo "0 results" . "<br>";
         }
-
-        exit();
     }
 ?>

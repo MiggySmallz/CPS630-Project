@@ -9,41 +9,24 @@
 
     <body>
         <div class="menu-bar">
-        <div>
-            <a href="index.php"><img id="logo" src="logo.png"></a>
+            <div>
+                <a href="signup.php">Sign Up</a>
+            </div>
+            <div>
+                <a href="signin.php">Sign In</a>
+            </div>
         </div>
-        <div>
-            <a href="index.php">Home</a>
-        </div>
-        <div>
-            <a href="types_of_services.php">Types Of Services</a>   
-        </div>
-        <div>
-            <a href="reviews.php">Reviews</a>
-        </div>
-        <div>
-            <a href="shopping_cart.php">Shopping Cart</a>
-        </div>
-        <div>
-            <a href="about_us.php">About Us</a>
-        </div>
-        <div>
-            <a href="contact_us.php">Contact Us</a>
-        </div>
-        <div>
-            <a href="signup.php">Sign Up</a>
-        </div>
-        <div>
-            <a href="signin.php">Sign In</a>
-        </div>
-    </div>
 
         <form id="signup" action="" method="post">
 
             <div id="signInField">
                 <h2>First Time? Sign up here.</h2>
-                <label>Email:</label> <input type="text" name="email" required><br>
-                <label>Password:</label> <input type="text" name="password" required><br>
+                <label>Username:</label> <input type="text" name="username" required><br>
+                <label>Password:</label> <input type="password" name="password" required><br>
+                <label>Name:</label> <input type="text" name="name" ><br>
+                <label>Phone:</label> <input type="text" name="phone" ><br>
+                <label>Address:</label> <input type="text" name="address" ><br>
+                <label>Email:</label> <input type="text" name="email" ><br>
                 <input type="submit" name="signUp" value="Sign Up">
             </div>
         </form>
@@ -68,7 +51,7 @@
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "Connected successfully";
+    //echo "Connected successfully";
 ?>
 
 <?php 
@@ -82,34 +65,37 @@
             return $data;
         }
 
-        $email = validate($_POST['email']);
+        $username = validate($_POST['username']);
         $password = validate($_POST['password']);
+        $name = validate($_POST['name']);
+        $phone = validate($_POST['phone']);
+        $address = validate($_POST['address']);
+        $email = validate($_POST['email']);
 
-        $sql = "SELECT * FROM users WHERE username='$email'";
+        $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($connect, $sql);
 
         if (mysqli_num_rows($result) === 1) {
-            //$row = mysqli_fetch_assoc($result);
-            //if ($row['username'] === $email) {
-            echo "<br>" . "Email is already being used";
+            echo "<br>" . "Username is already being used";
         }
         else {
             echo "<br>" . "Added to Database";
-            $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            $sql = "INSERT INTO users (username, password, name, phone, address, email) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $connect->prepare($sql);
         
-            $stmt->bind_param("ss", $email, $password);
+            $stmt->bind_param("ssssss", $username, $password, $name, $phone, $address, $email);
             $stmt->execute();
         }
 
-        $sql = "SELECT username, password FROM users";
+        $sql = "SELECT * FROM users";
         $result = mysqli_query($connect, $sql);
     
         if ($result-> num_rows > 0) {
-            echo "<div align='center'><table><tr><th>Email</th><th>Password</th></th></tr>";
+            echo "<div align='center'><table><tr><th>Username</th><th>Password</th><th>Name</th><th>Phone</th><th>Address</th><th>Email</th></tr>";
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo "<tr><td>".$row["username"]."</td><td>  ".$row["password"] . "</td></tr>";
+                echo "<tr><td>" . $row["username"] . "</td><td>" . $row["password"] ."</td><td>" . $row["name"] ."</td><td>" . $row["phone"] ."</td><td>" 
+                . $row["address"] ."</td><td>" . $row["email"] ."</td></tr>";
             }
             echo "</table></div>";
         } else {

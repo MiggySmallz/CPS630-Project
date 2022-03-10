@@ -36,10 +36,7 @@
         <a href="contact_us.php">Contact Us</a>
     </div>
     <div>
-        <a href="signup.php">Sign Up</a>
-    </div>
-    <div>
-        <a href="signin.php">Sign In</a>
+        <a href="logout.php">Log Out</a>
     </div>
 </div>
 
