@@ -20,7 +20,7 @@
 
             <div id="signInField">
                 <h2>Already have an account? Sign in here.</h2>
-                <label>Username:</label> <input type="text" name="email" required><br>
+                <label>Log In Id:</label> <input type="text" name="login_id" required><br>
                 <label>Password:</label> <input type="password" name="password" required><br>
                 <input type="submit" name="signUp" value="Log in">
             </div>
@@ -60,10 +60,10 @@
             return $data;
         }
 
-        $email = validate($_POST['email']);
+        $login_id = validate($_POST['login_id']);
         $password = validate($_POST['password']);
 
-        $sql = "SELECT * FROM users WHERE username='$email' AND password='$password'";
+        $sql = "SELECT * FROM users WHERE login_id='$login_id' AND password='$password'";
         $result = mysqli_query($connect, $sql);
 
         function redirect($url, $permanent = false) {
@@ -73,15 +73,15 @@
 
         if (mysqli_num_rows($result) === 1) {
             while ($row = $result -> fetch_assoc()) {
-                if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
-                    $_SESSION['username'] = $row['username'];
+                if (!isset($_SESSION['login_id']) && !isset($_SESSION['password'])) {
+                    $_SESSION['login_id'] = $row['login_id'];
                     $_SESSION['password'] = $row['password'];
                     redirect("index.php");
                 }
             }
         }
         else {
-            echo "<br>" . "Your email or password is incorrect.";
+            echo "<br>" . "Your ID or password is incorrect.";
         }
 
         $sql = "SELECT username, password FROM users";
