@@ -94,7 +94,7 @@
 
             <div class="shopping-info">
 
-                <form action="/invoice.php">
+                <form action="./invoice.php">
                 <p>Please select branch to ship from:</p>
                 <input type="radio" id="york" name="branch" value="Ryerson University, Victoria Street, Toronto, ON" checked>
                 <label for="York">York</label><br>

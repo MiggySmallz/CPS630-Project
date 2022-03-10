@@ -90,6 +90,7 @@
     $(function () {
         var origin, destination, map;
 
+
         // add input listeners
         google.maps.event.addDomListener(window, 'load', function (listener) {
             // setDestination();
