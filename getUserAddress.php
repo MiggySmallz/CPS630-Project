@@ -15,7 +15,7 @@ function func1()
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $result = mysqli_query($conn,"SELECT address FROM `users`;");
+        $result = mysqli_query($conn,"SELECT * FROM `users` WHERE user_id = 1;");
 
         $data = $result->fetch_assoc();
 
