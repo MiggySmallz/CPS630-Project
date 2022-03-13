@@ -34,10 +34,10 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "accounts";
+    $database = "cps630";
 
     $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS accounts;");
+    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
     $connect->close();
 
     // Create connection
@@ -84,14 +84,14 @@
             echo "<br>" . "Your ID or password is incorrect.";
         }
 
-        $sql = "SELECT username, password FROM users";
+        $sql = "SELECT login_id, password FROM users";
         $result = mysqli_query($connect, $sql);
     
         if ($result-> num_rows > 0) {
             echo "<div align='center'><table><tr><th>Email</th><th>Password</th></th></tr>";
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo "<tr><td>".$row["username"]."</td><td>  ".$row["password"] . "</td></tr>";
+                echo "<tr><td>".$row["login_id"]."</td><td>  ".$row["password"] . "</td></tr>";
             }
             echo "</table></div>";
         } else {

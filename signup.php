@@ -74,6 +74,11 @@
         $address = validate($_POST['address']);
         $balance = validate($_POST['balance']);
 
+        function redirect($url, $permanent = false) {
+            if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+            exit();
+        }
+
         $sql = "SELECT * FROM users WHERE login_id='$login_id'";
         $result = mysqli_query($connect, $sql);
 
@@ -87,6 +92,7 @@
         
             $stmt->bind_param("sssssss", $name, $tel_no, $email, $address, $login_id, $password, $balance);
             $stmt->execute();
+            redirect("signin.php");
         }
 
         $sql = "SELECT * FROM users";
