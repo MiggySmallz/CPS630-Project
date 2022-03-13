@@ -4,7 +4,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={Key_Here}"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={APIKEY}"
         type="text/javascript"></script>
 
     <head>

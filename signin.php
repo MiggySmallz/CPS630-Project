@@ -77,6 +77,7 @@
                     $_SESSION['login_id'] = $row['login_id'];
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['address'] = $row['address'];
+                    $_SESSION['user_id'] = $row['user_id'];
                     redirect("index.php");
                 }
             }
