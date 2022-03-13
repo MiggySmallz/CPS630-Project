@@ -105,6 +105,18 @@ img{
     background-color: rgb(92, 160, 216);
     padding: 20px;
 }
+
+#paymentField {
+    text-align: center;
+    font-size: 50px;
+    
+    margin-top: 5em;
+    margin-left: 3em;
+    margin-right: 3em;
+    background-color: rgb(92, 160, 216);
+    padding: 20px;
+}
+
 .item-desc{
     background-color: rgb(241, 241, 241);
     height: 250px;
