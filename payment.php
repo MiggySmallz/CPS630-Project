@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
-<title>Smart Customer Services</title>
-<link rel="stylesheet" href="project-team19.css">
-
-<style>
-</style>
+    <head>
+        <title>Smart Customer Services</title>
+        <link rel="stylesheet" href="project-team19.css">
+    </head>
     <body>
 
         <div class="menu-bar">
@@ -31,39 +30,55 @@
                 <a href="contact_us.php">Contact Us</a>
             </div>
             <div>
-                <a href="logout.php">Log Out</a>
+                <a href="signup.php">Sign Up</a>
             </div>
-
-            <form id="signup" action="" method="post">
-
-                <div id="paymentField">
-                    <h2>Enter your Payment Info</h2>
-                    <label>Credit Card Number:</label> <input type="text" name="credit_card" required><br>
-                    <label>CVC</label> <input type="password" name="cvc" required><br>
-                    <input type="submit" name="save" value="Submit">
-                </div>
-            </form>
+            <div>
+                <a href="signin.php">Sign In</a>
+            </div>
         </div>
+
+        <form id="signup" action="" method="post">
+
+            <div id="signInField">
+                <h2>Already have an account? Sign in here.</h2>
+                <label>Log In Id:</label> <input type="text" name="login_id" required><br>
+                <label>Password:</label> <input type="password" name="password" required><br>
+                <input type="submit" name="save" value="Log in">
+            </div>
+        </form>
+
     </body>
+
 </html>
 
 <?php
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "cps630";
+    $database = "accounts";
 
     $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
+    $connect->query("CREATE DATABASE IF NOT EXISTS accounts;");
     $connect->close();
 
+    // Create connection
+    $connect = mysqli_connect($servername, $username, $password, $database);
+    // Check connection
+    if (!$connect) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    //echo "Connected successfully" . "<br>";
+
+    session_start(); 
+?>
+
+<?php 
     function redirect($url, $permanent = false) {
         if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
         exit();
     }
 
-    if (isset($_POST['save'])) {
+    if (isset($_POST['signUp'])) {
         redirect("thank_you.php");
     }
 ?>
-
