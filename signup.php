@@ -23,11 +23,11 @@
                 <h2>First Time? Sign up here.</h2>
                 <label>Log In Id:</label> <input type="text" name="login_id" required><br>
                 <label>Password:</label> <input type="password" name="password" required><br>
-                <label>Name:</label> <input type="text" name="name" ><br>
-                <label>Phone:</label> <input type="text" name="phone" ><br>
-                <label>Email:</label> <input type="text" name="email" ><br>
-                <label>Address:</label> <input type="text" name="address" ><br>
-                <label>Balance:</label> <input type="text" name="balance" ><br>
+                <label>Name:</label> <input type="text" name="name" required><br>
+                <label>Phone:</label> <input type="text" name="phone" required><br>
+                <label>Email:</label> <input type="text" name="email" required><br>
+                <label>Address:</label> <input type="text" name="address" required ><br>
+                <label>Balance:</label> <input type="text" name="balance" required><br>
                 <input type="submit" name="signUp" value="Sign Up">
             </div>
         </form>
@@ -40,10 +40,10 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "accounts";
+    $database = "cps630";
 
     $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS accounts;");
+    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
     $connect->close();
 
     // Create connection
@@ -65,9 +65,6 @@
             $data = htmlspecialchars($data);
             return $data;
         }
-
-        //$sql = "CREATE TABLE user (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), city_code VARCHAR(50), 
-        //login_id VARCHAR(50), password VARCHAR(50), balance INT(50))";
 
         $login_id = validate($_POST['login_id']);
         $password = validate($_POST['password']);

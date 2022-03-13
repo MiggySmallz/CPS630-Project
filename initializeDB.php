@@ -19,7 +19,7 @@ if ($conn->connect_error) {
 $conn->query("CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))");
 $conn->query("CREATE TABLE items (item_id INT, name VARCHAR(255), price FLOAT, quantity INT);");
 $conn->query("CREATE TABLE stock (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
-// $conn->query("CREATE TABLE shopping (receipt_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, branch VARCHAR(255), total_price FLOAT);");
+$conn->query("CREATE TABLE shopping (receipt_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, branch VARCHAR(255), total_price FLOAT);");
 $conn->query("CREATE TABLE orders (order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, trip_id INT, receipt_id INT, user_id INT, branch VARCHAR(255), date_issued DATETIME, date_recieved DATETIME,total_price FLOAT);");  // add payment??
 $conn->query("CREATE TABLE trip (trip_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_id INT, distance FLOAT, branch VARCHAR(255), destination VARCHAR(255));"); 
 $conn->query("CREATE TABLE truck (truck_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_code INT, available VARCHAR(3));"); 
