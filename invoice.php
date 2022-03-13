@@ -10,11 +10,14 @@
 <script defer
         src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={ENTER API KEY HERE}"
         type="text/javascript"></script>
+
+<script type="text/javascript" src="./test.js"></script>
+
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
 
 <?php require_once('getUserAddress.php'); ?>
 
-<!--  -->
+<!-- AIzaSyBty7m_H-rgEQwNB5CH_tgI0XXQcHDAw_U -->
 
 
 </head>
@@ -51,39 +54,49 @@
 </div>
 <div id="container">
     <h1>Invoice</h1>
+    <div id="order"><button onclick="submitOrder('<?php echo $_GET['branch'] ?>', '<?php echo $_GET['shipment-time'] ?>'), window.location.href='/thank_you.php'" style="font-size: 20px">Place Your Order</button></div>
     <div class="cart">
-        <?php
-        $con = mysqli_connect("localhost", "root", "", "cps630"); // Check connection
+        <div style="display: flex; position: absolute;">
+            <?php
+            $con = mysqli_connect("localhost", "root", "", "cps630"); // Check connection
 
-            if (mysqli_connect_errno()) {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-            }
-            // $result = mysqli_query($con, "SELECT * FROM items");
-            $result = mysqli_query($con,"SELECT id, name, price, quantity FROM items GROUP BY id");
-            if ($result-> num_rows > 0) {
-                echo "<div align='center'><table><tr><th>Name</th><th>Price</th><th>Quantity</th></tr>";
-                // output data of each row
-                $count = 1;
-                $final_price = 0;
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr><td>".$row["name"]."</td><td>".$row["price"]."</td><td>".$row["quantity"]."</td></tr>";
-                    $count = $count +1;
-                    $final_price = $final_price+$row["price"]*$row["quantity"];
+                if (mysqli_connect_errno()) {
+                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 }
-                echo "<tr><td><b>Final Price</b></td><td><b>".$final_price."</b></td><td></td></tr>";
-                echo "</table></div>";
-            } else {
-                echo "0 results" . "<br>";
-            }
-            mysqli_close($con);
+                // $result = mysqli_query($con, "SELECT * FROM items");
+                $result = mysqli_query($con,"SELECT item_id, name, price, quantity FROM items GROUP BY item_id");
+                if ($result-> num_rows > 0) {
+                    echo "<div align='center' class='flex-child'><table><tr><th>Name</th><th>Price</th><th>Quantity</th></tr>";
+                    // output data of each row
+                    $count = 1;
+                    $final_price = 0;
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr><td>".$row["name"]."</td><td>".$row["price"]."</td><td>".$row["quantity"]."</td></tr>";
+                        $count = $count +1;
+                        $final_price = $final_price+$row["price"]*$row["quantity"];
+                    }
+                    echo "<tr><td><b>Final Price</b></td><td><b id='price'>".$final_price."</b></td><td></td></tr>";
+                    echo "</table></div>";
+                } else {
+                    echo "0 results" . "<br>";
+                }
+                mysqli_close($con);
 
-        ?>
-
-    <div id="map"></div>
-    </div>
+            ?>
+            <div class="maps-container">
+            <div class="flex-child" id="map"></div>
+            <div id="result">Distance from branch to your location is <b id="distance"></b></div>
+            </div>
+        </div>
 
     
+        
+    
+        
+    </div>
+    
 
+    <!-- , window.location.href='/thank_you.php' -->
 
     
     <script>
@@ -107,23 +120,6 @@
             map = new google.maps.Map(document.getElementById('map'), {zoom: 16, center: myLatLng,});
         }
 
-        // function setDestination() {
-        //     var from_places = new google.maps.places.Autocomplete(document.getElementById('from_places'));
-        //     var to_places = new google.maps.places.Autocomplete(document.getElementById('to_places'));
-
-        //     google.maps.event.addListener(from_places, 'place_changed', function () {
-        //         var from_place = from_places.getPlace();
-        //         var from_address = from_place.formatted_address;
-        //         $('#origin').val(from_address);
-        //     });
-
-        //     google.maps.event.addListener(to_places, 'place_changed', function () {
-        //         var to_place = to_places.getPlace();
-        //         var to_address = to_place.formatted_address;
-        //         $('#destination').val(to_address);
-        //     });
-        // }
-
         function displayRoute(origin, destination, directionsService, directionsDisplay) {
             
             directionsService.route({
@@ -146,13 +142,61 @@
         
         window.onload = (function (e) {
             e.preventDefault();
-            var origin = $('#origin').val();
-            var destination = $('#destination').val();
+            var origin = "<?php echo $_GET['branch'] ?>";
+            var destination = "<?php echo func1() ?>";
             var directionsDisplay = new google.maps.DirectionsRenderer({'draggable': true});
             var directionsService = new google.maps.DirectionsService();
-           displayRoute(origin, destination, directionsService, directionsDisplay);
-            // calculateDistance(travel_mode, origin, destination);
+            displayRoute(origin, destination, directionsService, directionsDisplay);
+            calculateDistance(origin, destination);
         });
+
+
+
+
+        function calculateDistance(origin, destination) {
+            var DistanceMatrixService = new google.maps.DistanceMatrixService();
+            DistanceMatrixService.getDistanceMatrix(
+                {
+                    origins: [origin],
+                    destinations: [destination],
+                    travelMode: google.maps.TravelMode["DRIVING"],
+                    // unitSystem: google.maps.UnitSystem.IMPERIAL, // miles and feet.
+                    unitSystem: google.maps.UnitSystem.metric, // kilometers and meters.
+                    avoidHighways: false,
+                    avoidTolls: false
+                }, save_results);
+        }
+
+        // save distance results
+        function save_results(response, status) {
+            
+            if (status != google.maps.DistanceMatrixStatus.OK) {
+                $('#result').html(err);
+            } else {
+                var origin = response.originAddresses[0];
+                var destination = response.destinationAddresses[0];
+                if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+                    $('#result').html("Sorry , not available to use this travel mode between " + origin + " and " + destination);
+                } else {
+                    var distance = response.rows[0].elements[0].distance;
+                    var duration = response.rows[0].elements[0].duration;
+                    var distance_in_kilo = distance.value / 1000; // the kilo meter
+                    var distance_in_mile = distance.value / 1609.34; // the mile
+                    var duration_text = duration.text;
+                    appendResults(distance_in_kilo, distance_in_mile, duration_text);
+                    // sendAjaxRequest(origin, destination, distance_in_kilo, distance_in_mile, duration_text);
+                }
+            }
+        }
+
+        // append html results
+        function appendResults(distance_in_kilo, distance_in_mile, duration_text) {
+        console.log(distance_in_kilo);
+        $('#distance').html(distance_in_kilo + "km");
+        }
+
+
+
     });
 
     // function getCurrentPosition() {

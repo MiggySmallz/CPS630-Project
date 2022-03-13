@@ -24,10 +24,10 @@ while($data = $result->fetch_assoc()) {
 }
 
 
-$result = mysqli_query($conn,"SELECT * FROM items WHERE id = $item_id");
+$result = mysqli_query($conn,"SELECT * FROM items WHERE item_id = $item_id");
 if ($result-> num_rows == 0) {
 
-    $sql = "INSERT INTO `items`(`id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', 1)";
+    $sql = "INSERT INTO `items`(`item_id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', 1)";
 
     if ($conn->query($sql) === TRUE) {
         echo "New record created successfully";
@@ -44,7 +44,7 @@ else{
         echo "Too many items";
     }
     else{
-        $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE id = $item_id";
+        $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
 
         if ($conn->query($sql) === TRUE) {
             echo "New record created successfully";

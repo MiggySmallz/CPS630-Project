@@ -17,10 +17,10 @@ if ($conn->connect_error) {
 }
 
 if ($quantity == 0){
-    $sql = "DELETE FROM `items` WHERE id = $item_id";
+    $sql = "DELETE FROM `items` WHERE item_id = $item_id";
 }
 else{
-    $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE id = $item_id";
+    $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
 }
 
 

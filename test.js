@@ -1,6 +1,7 @@
 function insertRecord(id, name, price, quantity){
-    $.ajax({type:"POST", url:"insertRecord.php", data:{item_id: id, item_name: name, item_price: price, quantity: quantity}, success:function(data){
-        if(data.localeCompare("Too many items") == 1){
+    $.ajax({type:"POST", url:"insertRecord.php", data:{type: "item", item_id: id, item_name: name, item_price: price, quantity: quantity}, success:function(data){
+      
+        if(data.includes("Too many items") == 1){
           $('.max-items').fadeIn(function() {
             window.setTimeout(function() {
               $('.max-items').fadeOut('slow');
@@ -16,9 +17,30 @@ function insertRecord(id, name, price, quantity){
         }
       ;}
     })
-
-    
-    
 } 
 
+function submitOrder(branch, time){
+  console.log(branch, time);
+  let price = document.getElementById("price").innerHTML;
+  let distance = document.getElementById("distance").innerHTML;
+  
+  $.ajax({type:"POST", url:"insertRecord.php", data:{type: "order", user_id: 1, branch: branch, time: time, price: price, distance: distance}, success:function(data){
+    console.log(data);
+  }
+  })
+}
+
+function shoppingCart(){
+
+
+
+  let branch = document.querySelector("input[name='branch']:checked").value;
+  let price = document.getElementById("price").innerHTML;
+  // console.log(branch);
+
+  $.ajax({type:"POST", url:"insertRecord.php", data:{type: "shopping", branch: branch, price: price}, success:function(data){
+    console.log(data);
+  }
+  })
+}
 

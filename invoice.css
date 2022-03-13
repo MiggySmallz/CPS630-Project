@@ -4,9 +4,9 @@
     align-content: center;
     margin-top: 2em;
     margin-left: 5em;
-
-
     position: relative;
+
+    /* position: relative; */
     
 
 }    
@@ -82,12 +82,47 @@ td{
 
 .cart{
     position: absolute;
-    margin-top: 8em;
+    margin-top: 12em;
     width: 1200px;
     content: center;
     display: flex;
     justify-content: center;
 }
 
+#order{
+    height: 50px;
+    position: absolute;
+    /* display: inline-flex; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6em;
+}
 
 
+.flex-child {
+    flex: 1;
+}  
+
+.flex-child:first-child {
+    margin-right: 10px;
+} 
+
+#result{
+
+    width: 600px;
+    height: 50px;
+    text-align: center;
+    margin-top: 2em;
+    margin-left: 5em;
+    /* margin-top: 500px; */
+}
+
+
+.maps-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+
+}

@@ -1,7 +1,16 @@
 .container{
     height: 100%;
     width: 100%;
+    background-color: rgb(214, 215, 219);
 }
+
+.container2{
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+} 
 
 a:link { text-decoration: none; }
 a:link { text-decoration: none; }
@@ -140,9 +149,20 @@ button {
   }
 
 .topright {
-    position: absolute;
-    right: 0px; top: 5em;
+    /* position: absolute; */
+    /* right: 0px; top: 5em; */
     width: 320px;
     min-height: 207em;
     background-color: rgb(253, 237, 237);   
+
 }
+
+.thankyou{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+
