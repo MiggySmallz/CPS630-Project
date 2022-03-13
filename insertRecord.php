@@ -25,9 +25,17 @@ if ($_POST['type'] == 'order'){
     $conn->query("INSERT INTO `orders`(`trip_id`,`receipt_id`,`user_id`,`branch`,`date_issued`,`date_recieved`,`total_price`)
     VALUES (1, 1, '$user_id', '$branch', '$time', 'null','$price')");
 
-    $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES (1, '$distance', '$branch', '$destination')";
+    $result = mysqli_query($conn,"SELECT * FROM `truck` WHERE available != 'no' LIMIT 1");
+    $truck_id = $result->fetch_assoc()['truck_id'];
+
+    
+    $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES ('$truck_id', '$distance', '$branch', '$destination')";
     // 
+
+    $conn->query("UPDATE `truck` SET `available`='no' WHERE truck_id = '$truck_id'");
+
     if ($conn->query($sql) === TRUE) {
+
         echo "New record created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
