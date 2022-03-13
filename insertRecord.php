@@ -17,19 +17,25 @@ if ($_POST['type'] == 'order'){
     $time = $_POST['time'];
     $price = $_POST['price'];
     $distance = $_POST['distance'];
-    // $destination = query from table
+    session_start();
+    $destination = $_SESSION['address']; 
+    $user_id = $_SESSION['user_id']; 
 
     // echo $branch, $time;
     $conn->query("INSERT INTO `orders`(`trip_id`,`receipt_id`,`user_id`,`branch`,`date_issued`,`date_recieved`,`total_price`)
-    VALUES (1, 1, 1, '$branch', '$time', 'null','$price')");
+    VALUES (1, 1, '$user_id', '$branch', '$time', 'null','$price')");
 
+    $result = mysqli_query($conn,"SELECT * FROM `truck` WHERE available != 'no' LIMIT 1");
+    $truck_id = $result->fetch_assoc()['truck_id'];
 
-    $result = mysqli_query($conn,"SELECT * FROM users WHERE user_id = 1");
-    $destination = $result->fetch_assoc()['address'];
-
-    $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES (1, '$distance', '$branch', '$destination')";
+    
+    $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES ('$truck_id', '$distance', '$branch', '$destination')";
     // 
+
+    $conn->query("UPDATE `truck` SET `available`='no' WHERE truck_id = '$truck_id'");
+
     if ($conn->query($sql) === TRUE) {
+
         echo "New record created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;

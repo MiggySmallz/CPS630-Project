@@ -8,7 +8,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={ENTER API KEY HERE}"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={KEY HERE}"
         type="text/javascript"></script>
 
 <script type="text/javascript" src="./test.js"></script>
@@ -46,10 +46,7 @@
         <a href="contact_us.php">Contact Us</a>
     </div>
     <div>
-        <a href="signup.php">Sign Up</a>
-    </div>
-    <div>
-        <a href="signin.php">Sign In</a>
+        <a href="logout.php">Log Out</a>
     </div>
 </div>
 <div id="container">
