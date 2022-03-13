@@ -45,7 +45,11 @@ if ($_POST['type'] == 'order'){
 
 if ($_POST['type'] == 'getOrderId'){
 
-    $result = mysqli_query($conn,"SELECT * FROM `orders` WHERE user_id = 6 ORDER BY order_id DESC LIMIT 1");
+
+    session_start();
+    $user_id = $_SESSION['user_id']; 
+
+    $result = mysqli_query($conn,"SELECT * FROM `orders` WHERE user_id = $user_id ORDER BY order_id DESC LIMIT 1");
     $currentOrderId = $result->fetch_assoc()['order_id'];
 
     echo $currentOrderId;
