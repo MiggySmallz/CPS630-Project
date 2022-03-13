@@ -76,6 +76,7 @@
                 if (!isset($_SESSION['login_id']) && !isset($_SESSION['password'])) {
                     $_SESSION['login_id'] = $row['login_id'];
                     $_SESSION['password'] = $row['password'];
+                    $_SESSION['address'] = $row['address'];
                     redirect("index.php");
                 }
             }
