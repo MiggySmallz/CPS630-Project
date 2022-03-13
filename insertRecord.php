@@ -28,7 +28,7 @@ if ($_POST['type'] == 'order'){
     $result = mysqli_query($conn,"SELECT * FROM `truck` WHERE available != 'no' LIMIT 1");
     $truck_id = $result->fetch_assoc()['truck_id'];
 
-    
+
     $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES ('$truck_id', '$distance', '$branch', '$destination')";
     // 
 
@@ -40,8 +40,6 @@ if ($_POST['type'] == 'order'){
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
-
 
 }
 

@@ -8,7 +8,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={KEY HERE}"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key={MAPKEY}"
         type="text/javascript"></script>
 
 <script type="text/javascript" src="./test.js"></script>

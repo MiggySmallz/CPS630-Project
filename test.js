@@ -32,8 +32,6 @@ function submitOrder(branch, time){
 
 function shoppingCart(){
 
-
-
   let branch = document.querySelector("input[name='branch']:checked").value;
   let price = document.getElementById("price").innerHTML;
   // console.log(branch);
@@ -43,4 +41,6 @@ function shoppingCart(){
   }
   })
 }
+
+
 

@@ -1,3 +1,30 @@
+a:link { text-decoration: none; }
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+a{color: white}
+
+.menu-bar{
+    height: 5em;
+    width: 100%;
+    background-color: rgb(27, 21, 58);
+
+    display: flex;
+    flex-wrap: nowrap;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.menu-bar > div{
+  /* background-color: #ca4747; */
+  color: white;
+  width: 5em;
+  margin: auto;
+  text-align: center;
+  /* line-height: 75px; */
+  font-size: 20px;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
@@ -88,4 +115,11 @@ div.trim {
     width: 100%;
     display: block;
   }
+}
+
+#logo{
+  max-width: 7em;
+  max-height: 7em;
+  display: block;
+  background-color: transparent;
 }

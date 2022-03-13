@@ -5,6 +5,7 @@
         <title>Smart Customer Services</title>
         <link rel="stylesheet" href="project-team19.css">
     </head>
+    <script type="text/javascript" src="./test.js"></script>
     <body>
 
         <div class="menu-bar">
@@ -38,43 +39,15 @@
 
             <div id="signInField">
                 <h2>Enter your Payment Info</h2>
-                <label>Credit Card Number:</label> <input type="text" name="login_id" required><br>
-                <label>CVC:</label> <input type="password" name="password" required><br>
-                <input type="submit" name="save" value="Enter">
+                <label>Credit Card Number:</label> <input type="text" name="cc_num" id="cc_num" required><br>
+                <label>CVC:</label> <input type="password" name="cvc" id="cvc" required><br>
+                <input style="font-size: 20px" type="submit" name="save" value="Payment" onclick="payment()">
             </div>
         </form>
+
+        <div id="result"></div>
 
     </body>
 
 </html>
 
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cps630";
-
-    $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
-    $connect->close();
-
-    // Create connection
-    $connect = mysqli_connect($servername, $username, $password, $database);
-    // Check connection
-    if (!$connect) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-?>
-
-<?php 
-    function redirect($url, $permanent = false) {
-        if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
-        exit();
-    }
-
-    if (isset($_POST['save'])) {
-
-
-        //redirect("thank_you.php");
-    }
-?>
