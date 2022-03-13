@@ -30,20 +30,17 @@
                 <a href="contact_us.php">Contact Us</a>
             </div>
             <div>
-                <a href="signup.php">Sign Up</a>
-            </div>
-            <div>
-                <a href="signin.php">Sign In</a>
+                <a href="logout.php">Log Out</a>
             </div>
         </div>
 
         <form id="signup" action="" method="post">
 
             <div id="signInField">
-                <h2>Already have an account? Sign in here.</h2>
-                <label>Log In Id:</label> <input type="text" name="login_id" required><br>
-                <label>Password:</label> <input type="password" name="password" required><br>
-                <input type="submit" name="save" value="Log in">
+                <h2>Enter your Payment Info</h2>
+                <label>Credit Card Number:</label> <input type="text" name="login_id" required><br>
+                <label>CVC:</label> <input type="password" name="password" required><br>
+                <input type="submit" name="save" value="Enter">
             </div>
         </form>
 
@@ -55,10 +52,10 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $database = "accounts";
+    $database = "cps630";
 
     $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS accounts;");
+    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
     $connect->close();
 
     // Create connection
@@ -67,9 +64,6 @@
     if (!$connect) {
         die("Connection failed: " . mysqli_connect_error());
     }
-    //echo "Connected successfully" . "<br>";
-
-    session_start(); 
 ?>
 
 <?php 
@@ -78,7 +72,9 @@
         exit();
     }
 
-    if (isset($_POST['signUp'])) {
-        redirect("thank_you.php");
+    if (isset($_POST['save'])) {
+
+
+        //redirect("thank_you.php");
     }
 ?>
