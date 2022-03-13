@@ -17,14 +17,27 @@ if ($conn->connect_error) {
 }
 
 $conn->query("CREATE TABLE users (user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), tel_no INT(50), email VARCHAR(50), address VARCHAR(50), login_id VARCHAR(50), password VARCHAR(50), balance INT(50))");
-$conn->query("CREATE TABLE items (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
+$conn->query("CREATE TABLE items (item_id INT, name VARCHAR(255), price FLOAT, quantity INT);");
 $conn->query("CREATE TABLE stock (id INT, name VARCHAR(255), price FLOAT, quantity INT);");
-
-
+// $conn->query("CREATE TABLE shopping (receipt_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, branch VARCHAR(255), total_price FLOAT);");
+$conn->query("CREATE TABLE orders (order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, trip_id INT, receipt_id INT, user_id INT, branch VARCHAR(255), date_issued DATETIME, date_recieved DATETIME,total_price FLOAT);");  // add payment??
+$conn->query("CREATE TABLE trip (trip_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_id INT, distance FLOAT, branch VARCHAR(255), destination VARCHAR(255));"); 
+$conn->query("CREATE TABLE truck (truck_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_code INT, available VARCHAR(3));"); 
 
 
 
 $conn->query("INSERT INTO `users`(`user_id`, `name`, `tel_no`, `email`, `address`, `login_id`, `password`, `balance`) VALUES (1, 'Albert', 2147483647, 'albert@gmail.com', '8 Sunnylea Ave W, Etobicoke, ON M8Y 2J7', 1, 'pass' , 0)" );
+
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (100, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (101, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (102, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (103, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (104, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (105, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (106, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (107, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (108, 'yes')" );
+$conn->query("INSERT INTO `truck`(`truck_code`, `available`) VALUES (109, 'yes')" );
 
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (0, 'ASUS RTX 3070', '1549.15', 1)" );
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (1, 'ASUS VivoBook 15', '679.99', 1)" );

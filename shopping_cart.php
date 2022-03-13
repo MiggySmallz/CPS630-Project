@@ -4,6 +4,7 @@
 <title>Smart Customer Services</title>
 <link rel="stylesheet" href="shopping_cart.css">
 
+<script type="text/javascript" src="./test.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
 <script type="text/javascript">
@@ -67,14 +68,14 @@
                     echo "Failed to connect to MySQL: " . mysqli_connect_error();
                 }
                 // $result = mysqli_query($con, "SELECT * FROM items");
-                $result = mysqli_query($con,"SELECT id, name, price, quantity FROM items GROUP BY id");
+                $result = mysqli_query($con,"SELECT item_id, name, price, quantity FROM items GROUP BY item_id");
                 if ($result-> num_rows > 0) {
                     echo "<div align='center'><table><tr><th>Name</th><th>Price</th><th>Quantity</th></tr>";
                     // output data of each row
                     $count = 1;
                     $final_price = 0;
                     while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>".$row["name"]."</td><td>".$row["price"]."</td><td><select name='item-quantity' class='item-quantity' id='".$row["id"]."'>
+                        echo "<tr><td>".$row["name"]."</td><td>".$row["price"]*$row["quantity"]."</td><td><select name='item-quantity' class='item-quantity' id='".$row["item_id"]."'>
                         <option value='0'>0 (Delete)</option>
                         <option "; if($row["quantity"] == '1'){{echo"selected='selected'";}} echo" value='1'>1</option>
                         <option "; if($row["quantity"] == '2'){{echo"selected='selected'";}} echo" value='2'>2</option>
@@ -85,7 +86,7 @@
                     $count = $count +1;
                     $final_price = $final_price+$row["price"]*$row["quantity"];
                     }
-                    echo "<tr><td><b>Final Price</b></td><td><b>".$final_price."</b></td><td></td></tr>";
+                    echo "<tr><td><b>Final Price</b></td><td><b id='price'>".$final_price."</b></td><td></td></tr>";
                     echo "</table></div>";
                 } else {
                     echo "0 results" . "<br>";
@@ -105,8 +106,8 @@
                 <label for="css">East York</label><br>
                 <input type="radio" id="etobicoke" name="branch" value="CF Sherway Gardens, The West Mall, Etobicoke, ON">
                 <label for="etobicoke">Etobicoke</label>
-
-                <br>  
+ 
+                <!-- <br>  
 
                 <p>Please select time for delivery:</p>
                 <select name='delivery-time' class='item-quantity' >
@@ -129,9 +130,22 @@
                 <option value="16:00">04.00 PM</option>
                 <option value="17:00">05.00 PM</option>
                 <option value="18:00">06.00 PM</option>
-                </select>
-                <input type="submit" value="Proceed to checkout">
+                </select> -->
+                <br><br>
+
+                <label for="shipment-time">Enter a date and time for your shipment:</label>
+                <input id="shipment-time" type="datetime-local" name="shipment-time" value="2022-03-01T09:00">
+  
+                <br><br>
+                
+                <input type="submit" value="Proceed to checkout" onclick="shoppingCart()">
                 </form>
+
+                
+
+
+                
+
 
             </div>
         </div>

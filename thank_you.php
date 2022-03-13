@@ -39,7 +39,11 @@
     </div>
 </div>
 
+<div class="thankyou" style="margin-top: 5em"><img style="height: 100px" src="imgs/greencheck.png"></div>
 
+<div class="thankyou"><h1 style="padding: 2em 0 2em 0">Thank you for shopping with us!</h1></div>
+<div class="thankyou"><h2>Your order has been placed</h2></div>
+<div class="thankyou"><h2>Your order# is: 1000</h2></div>
 
 </body>
 </html>
