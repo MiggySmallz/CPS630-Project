@@ -39,9 +39,9 @@
 
             <div id="signInField">
                 <h2>Enter your Payment Info</h2>
-                <label>Credit Card Number:</label> <input type="text" name="cc_num" id="cc_num" required><br>
-                <label>CVC:</label> <input type="password" name="cvc" id="cvc" required><br>
-                <input style="font-size: 20px" type="submit" name="save" value="Payment" onclick="payment()">
+                <label>Credit Card Number:</label> <input type="text" name="cc_num" required><br>
+                <label>CVC:</label> <input type="password" name="cvc" required><br>
+                <input style="font-size: 20px" type="submit" name="save" value="Payment">
             </div>
         </form>
 
@@ -50,4 +50,52 @@
     </body>
 
 </html>
+
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $database = "cps630";
+
+    $connect = mysqli_connect($servername, $username, $password);
+    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
+    $connect->close();
+
+    // Create connection
+    $connect = mysqli_connect($servername, $username, $password, $database);
+    // Check connection
+    if (!$connect) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+?>
+
+<?php 
+    session_start(); 
+
+    if (isset($_POST['save'])) {
+        function validate($data) {
+            $data = trim($data);
+            $data = stripslashes($data);
+            $data = htmlspecialchars($data);
+            return $data;
+        }
+
+        $user_id = validate($_SESSION['user_id']);
+        $cc_num = validate($_POST['cc_num']);
+        $cvc = validate($_POST['cvc']);
+
+        function redirect($url, $permanent = false) {
+            if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+            exit();
+        }
+
+        echo "<br>" . "Payment Success";
+        $sql = "INSERT INTO payment (user_id, cc_num, cvc) VALUES (?, ?, ?)";
+        $stmt = $connect->prepare($sql);
+
+        $stmt->bind_param("sss", $user_id, $cc_num, $cvc);
+        $stmt->execute();
+        redirect("signin.php");
+    }
+?>
 
