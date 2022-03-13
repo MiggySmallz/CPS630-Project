@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // $sql = "INSERT INTO `shopping_cart`(`item_id`) VALUES ('$item_id')";
-$result = $conn->query("SELECT * FROM `stock` WHERE id = $item_id");
+$result = $conn->query("SELECT * FROM `stock` WHERE stock_id = $item_id");
 
 while($data = $result->fetch_assoc()) {
     $name = $data['name'];
