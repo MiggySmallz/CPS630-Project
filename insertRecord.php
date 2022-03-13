@@ -43,6 +43,14 @@ if ($_POST['type'] == 'order'){
 
 }
 
+if ($_POST['type'] == 'getOrderId'){
+
+    $result = mysqli_query($conn,"SELECT * FROM `orders` WHERE user_id = 6 ORDER BY order_id DESC LIMIT 1");
+    $currentOrderId = $result->fetch_assoc()['order_id'];
+
+    echo $currentOrderId;
+}
+
 if ($_POST['type'] == 'shopping'){
     
     $branch = $_POST['branch'];
