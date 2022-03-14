@@ -44,3 +44,22 @@ function shoppingCart(){
   })
 }
 
+<<<<<<< Updated upstream
+=======
+function payment(){
+
+  let cc_num = document.getElementById("cc_num").value;
+  let cvv = document.getElementById("cvv").value;
+  console.log(cc_num);
+
+  $.ajax({type:"POST", url:"insertRecord.php", data:{type: "payment", cc_num: cc_num, cvv: cvv}, success:function(data){
+    console.log(data);
+  }
+  })
+}
+
+
+
+
+
+>>>>>>> Stashed changes

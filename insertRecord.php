@@ -43,10 +43,31 @@ if ($_POST['type'] == 'shopping'){
     
     $branch = $_POST['branch'];
     $price = $_POST['price'];
-    $conn->query("INSERT INTO `shopping`(`branch`,`total_price`) 
-    VALUES ('$branch', '$price')" );
+
+    $conn->query("INSERT INTO `shopping`(`branch`,`total_price`) VALUES ('$branch', '$price')" );
 
     echo $_POST['type'];
+}
+
+if ($_POST['type'] == 'payment'){
+    
+    $cc_num = $_POST['cc_num'];
+    $cvv = $_POST['cvv'];
+
+    session_start();
+    $user_id = $_SESSION['user_id']; 
+
+    $result = mysqli_query($conn,"SELECT * FROM payment WHERE user_id = $user_id");
+    if ($result-> num_rows == 0) {
+        $conn->query("INSERT INTO `payment`(`user_id`, `cc_num`,`cvv`) VALUES ('$user_id', '$cc_num', '$cvv')" );
+    }
+    else{
+        $conn->query("UPDATE `payment` SET `cc_num`= '$cc_num',`cvv`='$cvv' where user_id = $user_id");
+    }
+
+
+    
+    // echo $cc_num;
 }
 
 if ($_POST['type'] == 'item'){
