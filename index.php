@@ -1,9 +1,3 @@
-<?php
-    session_start();
-    echo 'login: ' . $_SESSION['login_id'];
-    echo 'password: ' . $_SESSION['password'];
-?>
-
 <!DOCTYPE php>
 <php lang="en">
 <meta charset="UTF-8">
@@ -42,7 +36,8 @@
         <a href="contact_us.php">Contact Us</a>
     </div>
     <div class="dropdown" <?php 
-        if ($_SESSION['login_id'] === 'admin' && $_SESSION['password'] === 'admin') {
+        session_start();
+        if ($_SESSION['login_id'] !== 'admin' && $_SESSION['password'] !== 'admin') {
             echo 'style="display:none;"'; 
         } 
         ?>>
