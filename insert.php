@@ -57,12 +57,14 @@
   <div class="form-group">
     <label for="seeAnotherField">Which table would you like to insert into?</label><br>
     <select class="form-control" name="table" id="seeAnotherField">
-        <option value="order">order</option>
-        <option value="item">item</option>
-        <option value="user">user</option>
+        <option value="orders">orders</option>
+        <option value="items">items</option>
+        <option value="users">users</option>
         <option value="trip">trip</option>
         <option value="truck">truck</option>
         <option value="shopping">shopping</option>
+        <option value="stock">stock</option>
+        <option value="stock">payment</option>
   </select>
   </div>
 
@@ -83,67 +85,89 @@
         <label>Enter receipt ID: </label>
           <input type="receipt_id" name="receipt_id" class="form-control"> <br>
         <label>Enter payment: </label>
-          <input type="payment" name="payment" class="form-control">
+          <input type="branch" name="payment" class="form-control">
   </div>
   
   
   <div class="form-group" id="itemDiv">
-      <label>Enter item ID: </label>
+      <label>Enter Item ID: </label>
         <input type="item_id" name="item_id" class="form-control"> <br>
-      <label>Enter item name: </label>
-        <input type="item_name" name="item_name" class="form-control"> <br>
-      <label>Enter price: </label>
+      <label>Enter Item Name: </label>
+        <input type="name" name="name" class="form-control"> <br>
+      <label>Enter Price: </label>
         <input type="price" name="price" class="form-control"> <br>
-      <label>Enter quantity: </label>
+      <label>Enter Quantity: </label>
         <input type="quantity" name="quantity" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="userDiv">
-      <label>Enter user ID: </label>
+      <label>Enter User ID: </label>
       <input type="user_id" name="user_id" class="form-control"> <br>
-    <label>Enter name: </label>
+    <label>Enter Name: </label>
       <input type="name" name="name" class="form-control"> <br>
-    <label>Enter address: </label>
+    <label>Enter Address: </label>
       <input type="address" name="address" class="form-control"> <br>
-    <label>Enter email: </label>
+    <label>Enter Email: </label>
       <input type="email" name="email" class="form-control"> <br>
-    <label>Enter phone number: </label>
+    <label>Enter Phone Number: </label>
       <input type="tel_no" name="tel_no" class="form-control"> <br>
-    <label>Enter balance: </label>
+    <label>Enter Balance: </label>
       <input type="balance" name="balance" class="form-control"> <br>
-    <label>Enter username: </label>
-      <input type="username" name="username" class="form-control"> <br>
-    <label>Enter password: </label>
+    <label>Enter Login ID: </label>
+      <input type="login_id" name="login_id" class="form-control"> <br>
+    <label>Enter Password: </label>
       <input type="password" name="password" class="form-control">
   </div>
   
   <div class="form-group" id="tripDiv">
-    <label>Enter trip ID: </label>
+    <label>Enter Trip ID: </label>
       <input type="trip_id" name="trip_id" class="form-control"> <br>
-    <label>Enter branch: </label>
+    <label>Enter Branch: </label>
       <input type="branch" name="branch" class="form-control"> <br>
-    <label>Enter destination: </label>
+    <label>Enter Destination: </label>
       <input type="destination" name="destination" class="form-control"> <br>
-    <label>Enter distance: </label>
+    <label>Enter Distance: </label>
       <input type="distance" name="distance" class="form-control"> <br>
-    <label>Enter truck ID: </label>
+    <label>Enter Truck ID: </label>
       <input type="truck_id" name="truck_id" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="truckDiv">
-    <label>Enter truck ID: </label>
+    <label>Enter Truck ID: </label>
       <input type="truck_id" name="truck_id" class="form-control"> <br>
-    <label>Enter truck code: </label>
+    <label>Enter Truck Code: </label>
       <input type="truck_code" name="truck_code" class="form-control"> <br>
+    <label>Enter Available: </label>
+      <input type="available" name="available" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="shoppingDiv">
-    <label>Enter receipt ID: </label>
+    <label>Enter Receipt ID: </label>
       <input type="receipt_id" name="receipt_id" class="form-control"> <br>
-    <label>Enter branch: </label>
+    <label>Enter Branch: </label>
       <input type="branch" name="branch" class="form-control"> <br>
-    <label>Enter total price: </label>
+    <label>Enter Total Price: </label>
       <input type="total_price" name="total_price" class="form-control"> <br>
+  </div>
+
+  <div class="form-group" id="stockDiv">
+    <label>Enter Stock ID: </label>
+      <input type="stock_id" name="stock_id" class="form-control"> <br>
+    <label>Enter Name: </label>
+      <input type="name" name="branamench" class="form-control"> <br>
+    <label>Enter Price: </label>
+      <input type="price" name="price" class="form-control"> <br>
+    <label>Enter Quantity: </label>
+      <input type="quantity" name="quantity" class="form-control"> <br>
+  </div>
+
+  <div class="form-group" id="paymentDiv">
+    <label>Enter User ID: </label>
+      <input type="user_id" name="user_id" class="form-control"> <br>
+    <label>Enter CC Number: </label>
+      <input type="cc_num" name="cc_num" class="form-control"> <br>
+    <label>Enter CCV: </label>
+      <input type="ccv" name="ccv" class="form-control"> <br>
   </div>
   
   
@@ -152,27 +176,33 @@
   
   <script>
   $("#seeAnotherField").change(function() {
-  if ($(this).val() == "item") {
+  if ($(this).val() == "items") {
     $('#itemDiv').show();
     $('#userDiv').hide();
     $('#orderDiv').hide();
     $('#tripDiv').hide();
     $('#truckDiv').hide();
     $('#shoppingDiv').hide();
-  } else if ($(this).val() == "user") {
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
+  } else if ($(this).val() == "users") {
     $('#userDiv').show();
     $('#itemDiv').hide();
     $('#orderDiv').hide();
     $('#tripDiv').hide();
     $('#truckDiv').hide();
     $('#shoppingDiv').hide();
-  } else if ($(this).val() == "order") {
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
+  } else if ($(this).val() == "orders") {
     $('#orderDiv').show();
     $('#itemDiv').hide();
     $('#userDiv').hide();
     $('#tripDiv').hide();
     $('#truckDiv').hide();
     $('#shoppingDiv').hide();
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
   } else if ($(this).val() == "trip") {
     $('#tripDiv').show();
     $('#itemDiv').hide();
@@ -180,6 +210,8 @@
     $('#orderDiv').hide();
     $('#truckDiv').hide();
     $('#shoppingDiv').hide();
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
   } else if ($(this).val() == "truck") {
     $('#truckDiv').show();
     $('#tripDiv').hide();
@@ -187,6 +219,8 @@
     $('#userDiv').hide();
     $('#orderDiv').hide();
     $('#shoppingDiv').hide();
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
   } else if ($(this).val() == "shopping") {
     $('#shoppingDiv').show();
     $('#truckDiv').hide();
@@ -194,6 +228,26 @@
     $('#itemDiv').hide();
     $('#userDiv').hide();
     $('#orderDiv').hide();
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
+  } else if ($(this).val() == "stock") {
+    $('#stockDiv').show();
+    $('#truckDiv').hide();
+    $('#tripDiv').hide();
+    $('#itemDiv').hide();
+    $('#userDiv').hide();
+    $('#orderDiv').hide();
+    $('#shoppingDiv').hide();
+    $('#paymentDiv').hide();
+  } else if ($(this).val() == "payment") {
+    $('#paymentDiv').show();
+    $('#truckDiv').hide();
+    $('#tripDiv').hide();
+    $('#itemDiv').hide();
+    $('#userDiv').hide();
+    $('#orderDiv').hide();
+    $('#shoppingDiv').hide();
+    $('#stockDiv').hide();
   } else {
     $('#itemDiv').hide();
     $('#userDiv').hide();
@@ -201,6 +255,8 @@
     $('#tripDiv').hide();
     $('#truckDiv').hide();
     $('#shoppingDiv').hide();
+    $('#stockDiv').hide();
+    $('#paymentDiv').hide();
   }
 });
 $("#seeAnotherField").trigger("change");
