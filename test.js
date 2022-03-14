@@ -44,8 +44,6 @@ function shoppingCart(){
   })
 }
 
-<<<<<<< Updated upstream
-=======
 function payment(){
 
   let cc_num = document.getElementById("cc_num").value;
@@ -59,7 +57,3 @@ function payment(){
 }
 
 
-
-
-
->>>>>>> Stashed changes
