@@ -56,18 +56,18 @@
       
         <label for="date">Select Table to delete from:</label>
         <select name="tables" id="tables">
-          <option value="order">order</option>
-          <option value="item">item</option>
-          <option value="user">user</option>
-          <option value="trip">trip</option>
-          <option value="truck">truck</option>
-          <option value="shopping">shopping</option>
+          <option value="orders">Orders</option>
+          <option value="items">Items</option>
+          <option value="users">Users</option>
+          <option value="trip">Trip</option>
+          <option value="truck">Truck</option>
+          <option value="shopping">Shopping</option>
+          <option value="stock">Stock</option>
+          <option value="payment">Payment</option>
         </select>
         <br><br>
       <input type="submit" value="Submit">
       </form>
-     
-     <a href="menu.html">Return to Site</a><br> 
    </body>
    
    </div>
