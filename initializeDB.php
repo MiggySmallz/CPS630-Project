@@ -62,13 +62,5 @@ $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (18,
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (19, 'Benq 25inch', '419.99', 1)"); 
 $conn->query("INSERT INTO `stock`(`id`, `name`, `price`, `quantity`) VALUES (20, 'Intel i7-11700k', '449.99', 1)"); 
 
-
-// if ($conn->query($sql) === TRUE) {
-//     echo "New record created successfully";
-// } else {
-//     echo "Error: " . $sql . "<br>" . $conn->error;
-// }
-
-
 $conn->close();
 ?> 
