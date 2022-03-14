@@ -8,7 +8,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script defer
-        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyAf4s1ThngrEIwENVp5hbrgvUwvIn-GS3M"
+        src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyBty7m_H-rgEQwNB5CH_tgI0XXQcHDAw_U"
         type="text/javascript"></script>
 
 <script type="text/javascript" src="./test.js"></script>
@@ -25,40 +25,33 @@
 <body>
 <div class="menu-bar">
     <div>
-        <a href="http://localhost/index.php"><img id="logo" src="logo.png"></a>
+        <a href="index.php"><img id="logo" src="logo.png"></a>
     </div>
     <div>
-        <a href="http://localhost/index.php">Home</a>
+        <a href="index.php">Home</a>
     </div>
     <div>
-        <a href="http://localhost/types_of_services.php">Types Of Services</a>   
+        <a href="types_of_services.php">Types Of Services</a>   
     </div>
     <div>
-        <a href="http://localhost/reviews.php">Reviews</a>
+        <a href="reviews.php">Reviews</a>
     </div>
     <div>
-        <a href="http://localhost/shopping_cart.php">Shopping Cart</a>
+        <a href="shopping_cart.php">Shopping Cart</a>
     </div>
     <div>
-        <a href="http://localhost/about_us.php">About Us</a>
+        <a href="about_us.php">About Us</a>
     </div>
     <div>
-        <a href="http://localhost/contact_us.php">Contact Us</a>
+        <a href="contact_us.php">Contact Us</a>
     </div>
     <div>
-        <a href="http://localhost/signup.php">Sign Up</a>
-    </div>
-    <div>
-        <a href="http://localhost/signin.php">Sign In</a>
+        <a href="logout.php">Log Out</a>
     </div>
 </div>
 <div id="container">
     <h1>Invoice</h1>
-<<<<<<< Updated upstream
-    <div id="order"><button onclick="submitOrder('<?php echo $_GET['branch'] ?>', '<?php echo $_GET['shipment-time'] ?>'), window.location.href='/thank_you.php'" style="font-size: 20px">Place Your Order</button></div>
-=======
     <div id="order"><button onclick="submitOrder('<?php echo $_GET['branch'] ?>', '<?php echo $_GET['shipment-time'] ?>'), window.location.href='./payment.php'" style="font-size: 20px">Place Your Order</button></div>
->>>>>>> Stashed changes
     <div class="cart">
         <div style="display: flex; position: absolute;">
             <?php

@@ -32,8 +32,6 @@ function submitOrder(branch, time){
 
 function shoppingCart(){
 
-
-
   let branch = document.querySelector("input[name='branch']:checked").value;
   let price = document.getElementById("price").innerHTML;
   // console.log(branch);
@@ -44,8 +42,6 @@ function shoppingCart(){
   })
 }
 
-<<<<<<< Updated upstream
-=======
 function payment(){
 
   let cc_num = document.getElementById("cc_num").value;
@@ -62,4 +58,3 @@ function payment(){
 
 
 
->>>>>>> Stashed changes
