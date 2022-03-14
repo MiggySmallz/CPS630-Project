@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <meta charset="UTF-8">
@@ -64,35 +66,12 @@
 
 </html>
 
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cps630";
-
-    $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
-    $connect->close();
-
-    // Create connection
-    $connect = mysqli_connect($servername, $username, $password, $database);
-    // Check connection
-    if (!$connect) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    //echo "Connected successfully";
-?>
-
 <?php 
     session_start(); 
 
+    require __DIR__ . './functions.php';
+
     if (isset($_POST['signUp'])) {
-        function validate($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
 
         $login_id = validate($_POST['login_id']);
         $password = validate($_POST['password']);
@@ -102,11 +81,6 @@
         $address = validate($_POST['address']);
         $balance = validate($_POST['balance']);
 
-        function redirect($url, $permanent = false) {
-            if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
-            exit();
-        }
-
         $sql = "SELECT * FROM users WHERE login_id='$login_id'";
         $result = mysqli_query($connect, $sql);
 
@@ -115,11 +89,8 @@
         }
         else {
             echo "<br>" . "Added to Database";
-            $sql = "INSERT INTO users (name, tel_no, email, address, login_id, password, balance) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $connect->prepare($sql);
-        
-            $stmt->bind_param("sssssss", $name, $tel_no, $email, $address, $login_id, $password, $balance);
-            $stmt->execute();
+            $connect -> query("INSERT INTO users (name, tel_no, email, address, login_id, password, balance) VALUES 
+                ('$name', '$tel_no', '$email', '$address', '$login_id', '$password', '$balance')");
             redirect("signin.php");
         }
 
@@ -138,6 +109,7 @@
             echo "0 results" . "<br>";
         }
 
+        $connect->close();
         exit();
     }
 ?>
