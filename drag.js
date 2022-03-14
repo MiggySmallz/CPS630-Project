@@ -31,11 +31,6 @@ $.ajax({type:"POST", url:"insertFromDrag.php", data:{item_id: Number(data.split(
 ;}
 })
 
-// $('.bottomleft').fadeIn(function() {
-//     window.setTimeout(function() {
-//       $('.bottomleft').fadeOut('slow');
-//     }, 1500);
-//   });
 
 ev.stopPropagation();
 return false;

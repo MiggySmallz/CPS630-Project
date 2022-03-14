@@ -18,6 +18,8 @@ if ($conn->connect_error) {
 // $sql = "INSERT INTO `shopping_cart`(`item_id`) VALUES ('$item_id')";
 $result = $conn->query("SELECT * FROM `stock` WHERE stock_id = $item_id");
 
+
+// Gets name and price of item from stock table given item_id
 while($data = $result->fetch_assoc()) {
     $name = $data['name'];
     $price = $data['price'];
@@ -54,11 +56,7 @@ else{
     }    
 }
 
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+
 
 $conn->close();
 ?> 

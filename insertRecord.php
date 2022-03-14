@@ -11,6 +11,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+
+
 if ($_POST['type'] == 'order'){
     
     $branch = $_POST['branch'];
@@ -74,6 +76,7 @@ if ($_POST['type'] == 'payment'){
     $user_id = $_SESSION['user_id']; 
 
     $result = mysqli_query($conn,"SELECT * FROM payment WHERE user_id = $user_id");
+
     if ($result-> num_rows == 0) {
         $conn->query("INSERT INTO `payment`(`user_id`, `cc_num`,`cvv`) VALUES ('$user_id', '$cc_num', '$cvv')" );
     }
