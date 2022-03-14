@@ -35,6 +35,15 @@
     <div>
         <a href="contact_us.php">Contact Us</a>
     </div>
+    <div class="dropdown">
+        <button class="dropbtn">DB Maintain</button>
+        <div class="dropdown-content">
+            <a href="insert.php">Insert</a>
+            <a href="delete.php">Delete</a>
+            <a href="select.php">Select</a>
+            <a href="update.php">Update</a>
+        </div>
+    </div>
     <div>
         <a href="logout.php">Log Out</a>
     </div>
