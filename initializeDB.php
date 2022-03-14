@@ -23,6 +23,7 @@ $conn->query("CREATE TABLE shopping (receipt_id INT(6) UNSIGNED AUTO_INCREMENT P
 $conn->query("CREATE TABLE orders (order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, trip_id INT, receipt_id INT, user_id INT, branch VARCHAR(255), date_issued DATETIME, date_recieved DATETIME,total_price FLOAT);"); 
 $conn->query("CREATE TABLE trip (trip_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_id INT, distance FLOAT, branch VARCHAR(255), destination VARCHAR(255));"); 
 $conn->query("CREATE TABLE truck (truck_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, truck_code INT, available VARCHAR(3));"); 
+$conn->query("CREATE TABLE payment (user_id INT(6), cc_num INT (16), cvv INT(3));"); 
 
 $conn->query("INSERT INTO `users`(`user_id`, `name`, `tel_no`, `email`, `address`, `login_id`, `password`, `balance`) VALUES (1, 'Albert', 2147483647, 'albert@gmail.com', '8 Sunnylea Ave W, Etobicoke, ON M8Y 2J7', 1, 'pass' , 0)" );
 

@@ -51,7 +51,7 @@
 </div>
 <div id="container">
     <h1>Invoice</h1>
-    <div id="order"><button onclick="submitOrder('<?php echo $_GET['branch'] ?>', '<?php echo $_GET['shipment-time'] ?>'), window.location.href='./thank_you.php'" style="font-size: 20px">Place Your Order</button></div>
+    <div id="order"><button onclick="submitOrder('<?php echo $_GET['branch'] ?>', '<?php echo $_GET['shipment-time'] ?>'), window.location.href='./payment.php'" style="font-size: 20px">Place Your Order</button></div>
     <div class="cart">
         <div style="display: flex; position: absolute;">
             <?php
