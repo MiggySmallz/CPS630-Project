@@ -92,6 +92,7 @@
                 . "<br>Total Price: " . $row["total_price"];
             }
             else echo "No entry found.";
+
         }
 
         if ($_POST['table'] === 'items') {
