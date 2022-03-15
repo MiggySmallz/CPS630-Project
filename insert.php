@@ -64,7 +64,6 @@
         <option value="users">users</option>
         <option value="trip">trip</option>
         <option value="truck">truck</option>
-        <option value="shopping">shopping</option>
         <option value="stock">stock</option>
         <option value="payment">payment</option>
   </select>
@@ -93,6 +92,8 @@
   <div class="form-group" id="itemDiv">
       <label>Enter Item ID: </label>
         <input type="item_id" name="item_item_id" class="form-control"> <br>
+      <label>Enter Cart ID: </label>
+        <input type="cart_id" name="item_cart_id" class="form-control"> <br>
       <label>Enter Item Name: </label>
         <input type="name" name="item_name" class="form-control"> <br>
       <label>Enter Price: </label>
@@ -142,15 +143,6 @@
       <input type="available" name="truck_available" class="form-control"> <br>
   </div>
   
-  <div class="form-group" id="shoppingDiv">
-    <label>Enter Receipt ID: </label>
-      <input type="receipt_id" name="shopping_receipt_id" class="form-control"> <br>
-    <label>Enter Branch: </label>
-      <input type="branch" name="shopping_branch" class="form-control"> <br>
-    <label>Enter Total Price: </label>
-      <input type="total_price" name="shopping_total_price" class="form-control"> <br>
-  </div>
-
   <div class="form-group" id="stockDiv">
     <label>Enter Name: </label>
       <input type="name" name="stock_name" class="form-control"> <br>
@@ -221,15 +213,6 @@
     $('#shoppingDiv').hide();
     $('#stockDiv').hide();
     $('#paymentDiv').hide();
-  } else if ($(this).val() == "shopping") {
-    $('#shoppingDiv').show();
-    $('#truckDiv').hide();
-    $('#tripDiv').hide();
-    $('#itemDiv').hide();
-    $('#userDiv').hide();
-    $('#orderDiv').hide();
-    $('#stockDiv').hide();
-    $('#paymentDiv').hide();
   } else if ($(this).val() == "stock") {
     $('#stockDiv').show();
     $('#truckDiv').hide();
@@ -291,12 +274,15 @@ $("#seeAnotherField").trigger("change");
 
     if ($_POST['table'] === 'items') {
       $item_id = validate($_POST['item_item_id']);
+      // $cart_id = validate($_POST['item_cart_id']);
       $name = validate($_POST['item_name']);
       $price = validate($_POST['item_price']);
       $quantity = validate($_POST['item_quantity']);
       echo "<br>" . "Added to Database " . $_POST['table'];
       $connect -> query("INSERT INTO items (item_id, name, price, quantity) VALUES 
       ('$item_id', '$name', '$price', '$quantity')");
+      // $connect -> query("INSERT INTO items (item_id, cart_id, name, price, quantity) VALUES 
+      // ('$item_id', '$cart_id', '$name', '$price', '$quantity')");
     }
 
     if ($_POST['table'] === 'users') {
@@ -331,15 +317,6 @@ $("#seeAnotherField").trigger("change");
       echo "<br>" . "Added to Database " . $_POST['table'];
       $connect -> query("INSERT INTO truck (truck_code, available) VALUES 
       ('$truck_truck_code', '$truck_available')");
-    }
-
-    if ($_POST['table'] === 'shopping') {
-      $shopping_branch = validate($_POST['shopping_branch']);
-      $shopping_total_price = validate($_POST['shopping_total_price']);
-
-      echo "<br>" . "Added to Database " . $_POST['table'];
-      $connect -> query("INSERT INTO shopping (branch, total_price) VALUES 
-      ('$shopping_branch', '$shopping_total_price')");
     }
 
     if ($_POST['table'] === 'stock') {
