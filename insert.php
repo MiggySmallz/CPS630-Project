@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -53,7 +55,7 @@
 
      <h1 style="text-align:center;">Insert Records</h1>
 
-<form class="update" action="update.php" method="post">
+<form class="insert" action="" method="post">
   <div class="form-group">
     <label for="seeAnotherField">Which table would you like to insert into?</label><br>
     <select class="form-control" name="table" id="seeAnotherField">
@@ -64,28 +66,27 @@
         <option value="truck">truck</option>
         <option value="shopping">shopping</option>
         <option value="stock">stock</option>
-        <option value="stock">payment</option>
+        <option value="payment">payment</option>
   </select>
   </div>
 
   <div class="form-group" id="orderDiv">
-    <form action="insert.php" method="post">
-        <label>Enter Order ID: </label>
-          <input type="order_id" name="order_id" class="form-control"> <br>
-        <label>Enter Trip ID: </label>
-          <input type="trip_id" name="trip_id" class="form-control"> <br>
-        <label>Enter date issued: </label>
-          <input type="date_issued" name="date_issued" class="form-control"> <br>
-        <label>Enter date received: </label>
-          <input type="date_received" name="date_received" class="form-control"> <br>
-        <label>Enter total price: </label>
-          <input type="total_price" name="total_price" class="form-control"> <br>
-        <label>Enter user ID: </label>
-          <input type="user_id" name="user_id" class="form-control"> <br>
-        <label>Enter receipt ID: </label>
-          <input type="receipt_id" name="receipt_id" class="form-control"> <br>
-        <label>Enter payment: </label>
-          <input type="branch" name="payment" class="form-control">
+      <label>Enter Order ID: </label>
+        <input type="order_id" name="order_id" class="form-control"> <br>
+      <label>Enter Trip ID: </label>
+        <input type="trip_id" name="trip_id" class="form-control"> <br>
+      <label>Enter date issued: </label>
+        <input type="date_issued" name="date_issued" class="form-control"> <br>
+      <label>Enter date received: </label>
+        <input type="date_received" name="date_received" class="form-control"> <br>
+      <label>Enter total price: </label>
+        <input type="total_price" name="total_price" class="form-control"> <br>
+      <label>Enter user ID: </label>
+        <input type="user_id" name="user_id" class="form-control"> <br>
+      <label>Enter receipt ID: </label>
+        <input type="receipt_id" name="receipt_id" class="form-control"> <br>
+      <label>Enter payment: </label>
+        <input type="branch" name="payment" class="form-control">
   </div>
   
   
@@ -171,7 +172,7 @@
   </div>
   
   
-  <input type="submit" value="Submit">
+  <input type="submit" name="submit" value="Submit">
 </form>
   
   <script>
@@ -266,3 +267,50 @@ $("#seeAnotherField").trigger("change");
 </div>
    
 </html>
+
+<?php 
+  require __DIR__ . './functions.php';
+
+  if (isset($_POST['submit'])) {
+
+    if (isset($_POST['order_id'])) {
+      $order_id = validate($_POST['order_id']);
+
+    }
+
+    <div class="form-group" id="orderDiv">
+    <label>Enter Order ID: </label>
+      <input type="order_id" name="order_id" class="form-control"> <br>
+    <label>Enter Trip ID: </label>
+      <input type="trip_id" name="trip_id" class="form-control"> <br>
+    <label>Enter date issued: </label>
+      <input type="date_issued" name="date_issued" class="form-control"> <br>
+    <label>Enter date received: </label>
+      <input type="date_received" name="date_received" class="form-control"> <br>
+    <label>Enter total price: </label>
+      <input type="total_price" name="total_price" class="form-control"> <br>
+    <label>Enter user ID: </label>
+      <input type="user_id" name="user_id" class="form-control"> <br>
+    <label>Enter receipt ID: </label>
+      <input type="receipt_id" name="receipt_id" class="form-control"> <br>
+    <label>Enter payment: </label>
+      <input type="branch" name="payment" class="form-control">
+    </div>
+
+    if (isset($_POST['user_id'])) {
+      $user_id = validate($_POST['user_id']);
+      $name = validate($_POST['name']);
+      $address = validate($_POST['address']);
+      $email = validate($_POST['email']);
+      $tel_no = validate($_POST['tel_no']);
+      $balance = validate($_POST['balance']);
+      $login_id = validate($_POST['login_id']);
+      $password = validate($_POST['password']);
+
+      echo "<br>" . "Added to Database";
+      $connect -> query("INSERT INTO users (name, tel_no, email, address, login_id, password, balance) VALUES 
+      ('$name', '$tel_no', '$email', '$address', '$login_id', '$password', '$balance')");
+    }
+
+  }
+?>
