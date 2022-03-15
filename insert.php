@@ -74,31 +74,31 @@
       <label>Enter Order ID: </label>
         <input type="order_id" name="order_id" class="form-control"> <br>
       <label>Enter Trip ID: </label>
-        <input type="trip_id" name="trip_id" class="form-control"> <br>
+        <input type="text" name="order_trip_id" class="form-control"> <br>
       <label>Enter date issued: </label>
-        <input type="date_issued" name="date_issued" class="form-control"> <br>
+        <input type="date_issued" name="order_date_issued" class="form-control"> <br>
       <label>Enter date received: </label>
-        <input type="date_received" name="date_received" class="form-control"> <br>
+        <input type="date_received" name="order_date_received" class="form-control"> <br>
       <label>Enter total price: </label>
-        <input type="total_price" name="total_price" class="form-control"> <br>
+        <input type="total_price" name="order_total_price" class="form-control"> <br>
       <label>Enter user ID: </label>
-        <input type="user_id" name="user_id" class="form-control"> <br>
+        <input type="user_id" name="order_user_id" class=" form-control"> <br>
       <label>Enter receipt ID: </label>
-        <input type="receipt_id" name="receipt_id" class="form-control"> <br>
-      <label>Enter payment: </label>
-        <input type="branch" name="payment" class="form-control">
+        <input type="receipt_id" name="order_receipt_id" class="form-control"> <br>
+      <label>Enter Branch: </label>
+        <input type="branch" name="order_branch" class="form-control">
   </div>
   
   
   <div class="form-group" id="itemDiv">
       <label>Enter Item ID: </label>
-        <input type="item_id" name="item_id" class="form-control"> <br>
+        <input type="item_id" name="item_item_id" class="form-control"> <br>
       <label>Enter Item Name: </label>
-        <input type="name" name="name" class="form-control"> <br>
+        <input type="name" name="item_name" class="form-control"> <br>
       <label>Enter Price: </label>
-        <input type="price" name="price" class="form-control"> <br>
+        <input type="price" name="item_price" class="form-control"> <br>
       <label>Enter Quantity: </label>
-        <input type="quantity" name="quantity" class="form-control"> <br>
+        <input type="quantity" name="item_quantity" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="userDiv">
@@ -122,53 +122,51 @@
   
   <div class="form-group" id="tripDiv">
     <label>Enter Trip ID: </label>
-      <input type="trip_id" name="trip_id" class="form-control"> <br>
+      <input type="text" name="trip_trip_id" class="form-control"> <br>
     <label>Enter Branch: </label>
-      <input type="branch" name="branch" class="form-control"> <br>
+      <input type="branch" name="trip_branch" class="form-control"> <br>
     <label>Enter Destination: </label>
-      <input type="destination" name="destination" class="form-control"> <br>
+      <input type="destination" name="trip_destination" class="form-control"> <br>
     <label>Enter Distance: </label>
-      <input type="distance" name="distance" class="form-control"> <br>
+      <input type="distance" name="trip_distance" class="form-control"> <br>
     <label>Enter Truck ID: </label>
-      <input type="truck_id" name="truck_id" class="form-control"> <br>
+      <input type="truck_id" name="trip_truck_id" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="truckDiv">
     <label>Enter Truck ID: </label>
-      <input type="truck_id" name="truck_id" class="form-control"> <br>
+      <input type="truck_id" name="truck_truck_id" class="form-control"> <br>
     <label>Enter Truck Code: </label>
-      <input type="truck_code" name="truck_code" class="form-control"> <br>
+      <input type="truck_code" name="truck_truck_code" class="form-control"> <br>
     <label>Enter Available: </label>
-      <input type="available" name="available" class="form-control"> <br>
+      <input type="available" name="truck_available" class="form-control"> <br>
   </div>
   
   <div class="form-group" id="shoppingDiv">
     <label>Enter Receipt ID: </label>
-      <input type="receipt_id" name="receipt_id" class="form-control"> <br>
+      <input type="receipt_id" name="shopping_receipt_id" class="form-control"> <br>
     <label>Enter Branch: </label>
-      <input type="branch" name="branch" class="form-control"> <br>
+      <input type="branch" name="shopping_branch" class="form-control"> <br>
     <label>Enter Total Price: </label>
-      <input type="total_price" name="total_price" class="form-control"> <br>
+      <input type="total_price" name="shopping_total_price" class="form-control"> <br>
   </div>
 
   <div class="form-group" id="stockDiv">
-    <label>Enter Stock ID: </label>
-      <input type="stock_id" name="stock_id" class="form-control"> <br>
     <label>Enter Name: </label>
-      <input type="name" name="branamench" class="form-control"> <br>
+      <input type="name" name="stock_name" class="form-control"> <br>
     <label>Enter Price: </label>
-      <input type="price" name="price" class="form-control"> <br>
+      <input type="price" name="stock_price" class="form-control"> <br>
     <label>Enter Quantity: </label>
-      <input type="quantity" name="quantity" class="form-control"> <br>
+      <input type="quantity" name="stock_quantity" class="form-control"> <br>
   </div>
 
   <div class="form-group" id="paymentDiv">
     <label>Enter User ID: </label>
-      <input type="user_id" name="user_id" class="form-control"> <br>
+      <input type="user_id" name="payment_user_id" class="form-control"> <br>
     <label>Enter CC Number: </label>
-      <input type="cc_num" name="cc_num" class="form-control"> <br>
+      <input type="cc_num" name="payment_cc_num" class="form-control"> <br>
     <label>Enter CCV: </label>
-      <input type="ccv" name="ccv" class="form-control"> <br>
+      <input type="ccv" name="payment_ccv" class="form-control"> <br>
   </div>
   
   
@@ -196,6 +194,7 @@
     $('#stockDiv').hide();
     $('#paymentDiv').hide();
   } else if ($(this).val() == "orders") {
+    console.log("ORDER");
     $('#orderDiv').show();
     $('#itemDiv').hide();
     $('#userDiv').hide();
@@ -272,33 +271,35 @@ $("#seeAnotherField").trigger("change");
   require __DIR__ . './functions.php';
 
   if (isset($_POST['submit'])) {
+    
+    if ($_POST['table'] === 'orders') {
+      $trip_id = validate($_POST['order_trip_id']);
+      $date_issued = validate($_POST['order_date_issued']);
+      $date_received = validate($_POST['order_date_received']);
+      $total_price = validate($_POST['order_total_price']);
+      $user_id = validate($_POST['order_user_id']);
+      $receipt_id = validate($_POST['order_receipt_id']);
+      $branch = validate($_POST['order_branch']);
 
-    if (isset($_POST['order_id'])) {
-      $order_id = validate($_POST['order_id']);
+      echo "<br>trip_id: " . $trip_id . " date issued: " . $date_issued . " date_received: " . $date_received . " total_price: " . $total_price . " user_id: " . $user_id . 
+        " receipt_id: " . $receipt_id . " branch: " . $branch;
 
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO orders (trip_id, receipt_id, user_id, branch, date_issued, date_recieved, total_price) VALUES
+      ('$trip_id', '$receipt_id', '$user_id', '$branch', '$date_issued', '$date_received', '$total_price')");
     }
 
-    <div class="form-group" id="orderDiv">
-    <label>Enter Order ID: </label>
-      <input type="order_id" name="order_id" class="form-control"> <br>
-    <label>Enter Trip ID: </label>
-      <input type="trip_id" name="trip_id" class="form-control"> <br>
-    <label>Enter date issued: </label>
-      <input type="date_issued" name="date_issued" class="form-control"> <br>
-    <label>Enter date received: </label>
-      <input type="date_received" name="date_received" class="form-control"> <br>
-    <label>Enter total price: </label>
-      <input type="total_price" name="total_price" class="form-control"> <br>
-    <label>Enter user ID: </label>
-      <input type="user_id" name="user_id" class="form-control"> <br>
-    <label>Enter receipt ID: </label>
-      <input type="receipt_id" name="receipt_id" class="form-control"> <br>
-    <label>Enter payment: </label>
-      <input type="branch" name="payment" class="form-control">
-    </div>
+    if ($_POST['table'] === 'items') {
+      $item_id = validate($_POST['item_item_id']);
+      $name = validate($_POST['item_name']);
+      $price = validate($_POST['item_price']);
+      $quantity = validate($_POST['item_quantity']);
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO items (item_id, name, price, quantity) VALUES 
+      ('$item_id', '$name', '$price', '$quantity')");
+    }
 
-    if (isset($_POST['user_id'])) {
-      $user_id = validate($_POST['user_id']);
+    if ($_POST['table'] === 'users') {
       $name = validate($_POST['name']);
       $address = validate($_POST['address']);
       $email = validate($_POST['email']);
@@ -307,10 +308,58 @@ $("#seeAnotherField").trigger("change");
       $login_id = validate($_POST['login_id']);
       $password = validate($_POST['password']);
 
-      echo "<br>" . "Added to Database";
+      echo "<br>" . "Added to Database " . $_POST['table'];
       $connect -> query("INSERT INTO users (name, tel_no, email, address, login_id, password, balance) VALUES 
       ('$name', '$tel_no', '$email', '$address', '$login_id', '$password', '$balance')");
     }
 
+    if ($_POST['table'] === 'trip') {
+      $trip_truck_id = validate($_POST['trip_truck_id']);
+      $trip_distance = validate($_POST['trip_distance']);
+      $trip_branch = validate($_POST['trip_branch']);
+      $trip_destination = validate($_POST['trip_destination']);
+
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO trip (truck_id, distance, branch, destination) VALUES 
+      ('$trip_truck_id', '$trip_distance', '$trip_branch', '$trip_destination')");
+    }
+
+    if ($_POST['table'] === 'truck') {
+      $truck_truck_code = validate($_POST['truck_truck_code']);
+      $truck_available = validate($_POST['truck_available']);
+
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO truck (truck_code, available) VALUES 
+      ('$truck_truck_code', '$truck_available')");
+    }
+
+    if ($_POST['table'] === 'shopping') {
+      $shopping_branch = validate($_POST['shopping_branch']);
+      $shopping_total_price = validate($_POST['shopping_total_price']);
+
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO shopping (branch, total_price) VALUES 
+      ('$shopping_branch', '$shopping_total_price')");
+    }
+
+    if ($_POST['table'] === 'stock') {
+      $stock_name = validate($_POST['stock_name']);
+      $stock_price = validate($_POST['stock_price']);
+      $stock_quantity = validate($_POST['stock_quantity']);
+
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO stock (name, price, quantity) VALUES 
+      ('$stock_name', '$stock_price', '$stock_quantity')");
+    }
+
+    if ($_POST['table'] === 'payment') {
+      $payment_user_id = validate($_POST['payment_user_id']);
+      $payment_cc_num = validate($_POST['payment_cc_num']);
+      $payment_ccv = validate($_POST['payment_ccv']);
+
+      echo "<br>" . "Added to Database " . $_POST['table'];
+      $connect -> query("INSERT INTO payment (user_id, cc_num, cvv) VALUES 
+      ('$payment_user_id', '$payment_cc_num', '$payment_ccv')");
+    }
   }
 ?>

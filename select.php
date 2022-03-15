@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -50,10 +52,10 @@
       
      <h1 style="text-align:center;">Select Records</h1>
      
-     <form action="search_result.php" method="post">
+     <form action="" method="post">
      
        <p>Select Table to Search From:<p>
-         <select name="tables">
+         <select name="table">
             <option value="orders">Orders</option>
             <option value="items">Items</option>
             <option value="users">Users</option>
@@ -66,12 +68,70 @@
        
      
          <p>Type in the id to Search From Table:<p>
-         <input type="text" id="entry" name="entry"><br>
+         <input type="text" id="item" name="item"><br>
        
-       <input type="submit" value="Submit">
+       <input type="submit" name="submit" value="Submit">
      </form>
    </body>
    
    </div>
    
 </html>
+
+<?php
+    require __DIR__ . './functions.php';
+
+    if (isset($_POST['submit'])) {
+        if ($_POST['table'] === 'orders') {
+            $item = $_POST['item'];
+            $result = $connect -> query("SELECT * from orders WHERE order_id=$item;");
+
+            $row = mysqli_fetch_assoc($result);
+            echo $row["order_id"];
+        }
+
+        if ($_POST['table'] === 'items') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from items WHERE item_id=$item;");
+        }
+
+        if ($_POST['table'] === 'users') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from users WHERE user_id=$item;");
+        }
+
+        if ($_POST['table'] === 'trip') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from trip WHERE trip_id=$item;");
+        }
+        
+        if ($_POST['table'] === 'truck') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from truck WHERE truck_id=$item;");
+        }
+    
+        if ($_POST['table'] === 'shopping') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from shopping WHERE receipt_id=$item;");
+        }
+    
+        if ($_POST['table'] === 'stock') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from stock WHERE stock_id=$item;");
+        }
+    
+        if ($_POST['table'] === 'payment') {
+            $item = $_POST['item'];
+            echo "<br>" . "Deleted from Table " . $_POST['table'];
+            $connect -> query("SELECT * from payment WHERE user_id=$item;");
+        }
+    }
+
+
+?>
