@@ -87,7 +87,7 @@
             $result = $connect -> query("SELECT * from orders WHERE order_id=$item;");
 
             $row = mysqli_fetch_assoc($result);
-            echo $row["order_id"];
+            echo "Order Id: " . $row["order_id"];
         }
 
         if ($_POST['table'] === 'items') {
