@@ -49,6 +49,12 @@
             <a href="update.php">Update</a>
         </div>
     </div>
+
+    <form class="searchBar" action="" method='post'>
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit" name="submit">Search</button>
+    </form>
+
     <div>
         <a href="logout.php">Log Out</a>
     </div>
