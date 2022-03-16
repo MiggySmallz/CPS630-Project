@@ -63,16 +63,5 @@
 
         $sql = "SELECT login_id, password FROM users";
         $result = mysqli_query($connect, $sql);
-    
-        if ($result-> num_rows > 0) {
-            echo "<div align='center'><table><tr><th>Email</th><th>Password</th></th></tr>";
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                echo "<tr><td>".$row["login_id"]."</td><td>  ".$row["password"] . "</td></tr>";
-            }
-            echo "</table></div>";
-        } else {
-            echo "0 results" . "<br>";
-        }
     }
 ?>

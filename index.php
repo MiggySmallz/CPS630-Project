@@ -57,9 +57,8 @@
         </div>
     </div>
     
-    <form class="searchBar" onsubmit="addedItemNotification()" method='post'>
+    <form class="searchBar" action="select.php" method='post'>
         <input type="text" placeholder="Search for specific order..." name="search">
-        <button type="submit" name="submit">Load</button>
     </form>
 
     <button type="submit" name="submit" onclick="addedItemNotification()">Search</button>

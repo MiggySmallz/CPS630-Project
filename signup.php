@@ -96,18 +96,6 @@
 
         $sql = "SELECT * FROM users";
         $result = mysqli_query($connect, $sql);
-    
-        if ($result-> num_rows > 0) {
-            echo "<div align='center'><table><tr><th>Login_Id</th><th>Password</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Balance</th></tr>";
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                echo "<tr><td>" . $row["login_id"] . "</td><td>" . $row["password"] ."</td><td>" . $row["name"] ."</td><td>" . $row["tel_no"] ."</td><td>" 
-                . $row["email"] ."</td><td>" . $row["address"] ."</td><td>" . $row["balance"] ."</td></tr>";
-            }
-            echo "</table></div>";
-        } else {
-            echo "0 results" . "<br>";
-        }
 
         $connect->close();
         exit();

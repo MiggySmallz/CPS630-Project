@@ -67,7 +67,4 @@ window.onload = (function () {
 
 session_start();
 $_SESSION['cart_id']++;
-
-echo "230879324807234    " . $_SESSION['cart_id'];
-
 ?>

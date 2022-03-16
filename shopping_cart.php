@@ -24,6 +24,8 @@
     // }); -->
 <!-- </script> -->
 
+<script type="text/javascript" src="./drag.js"></script>
+
 <script type="text/javascript">
     window.onload = (function () {
         populateTable()
@@ -34,8 +36,6 @@
 
     });
 </script>
-
-<script type="text/javascript" src="./drag.js"></script>
 
 <body>
 

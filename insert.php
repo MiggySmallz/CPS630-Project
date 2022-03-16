@@ -274,15 +274,13 @@ $("#seeAnotherField").trigger("change");
 
     if ($_POST['table'] === 'items') {
       $item_id = validate($_POST['item_item_id']);
-      // $cart_id = validate($_POST['item_cart_id']);
+      $cart_id = validate($_POST['item_cart_id']);
       $name = validate($_POST['item_name']);
       $price = validate($_POST['item_price']);
       $quantity = validate($_POST['item_quantity']);
       echo "<br>" . "Added to Database " . $_POST['table'];
-      $connect -> query("INSERT INTO items (item_id, name, price, quantity) VALUES 
-      ('$item_id', '$name', '$price', '$quantity')");
-      // $connect -> query("INSERT INTO items (item_id, cart_id, name, price, quantity) VALUES 
-      // ('$item_id', '$cart_id', '$name', '$price', '$quantity')");
+      $connect -> query("INSERT INTO items (item_id, cart_id, name, price, quantity) VALUES 
+      ('$item_id', '$cart_id', '$name', '$price', '$quantity')");
     }
 
     if ($_POST['table'] === 'users') {
