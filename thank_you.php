@@ -19,7 +19,12 @@ window.onload = (function () {
 
 </script>
 
+<?php include 'dbconnect.php' ?>
+
 <body>
+
+
+
 
 <div class="menu-bar">
     <div>
@@ -56,3 +61,13 @@ window.onload = (function () {
 
 </body>
 </html>
+
+
+<?php 
+
+session_start();
+$_SESSION['cart_id']++;
+
+echo "230879324807234    " . $_SESSION['cart_id'];
+
+?>

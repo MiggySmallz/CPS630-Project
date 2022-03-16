@@ -22,23 +22,24 @@ if ($_POST['type'] == 'order'){
     session_start();
     $destination = $_SESSION['address']; 
     $user_id = $_SESSION['user_id']; 
+    $cart_id = $_SESSION['cart_id']; 
 
-    // echo $branch, $time;
-    $conn->query("INSERT INTO `orders`(`trip_id`,`receipt_id`,`user_id`,`branch`,`date_issued`,`date_recieved`,`total_price`)
-    VALUES (1, 1, '$user_id', '$branch', '$time', 'null','$price')");
+
+    $sql = "INSERT INTO `orders`(`trip_id`,`cart_id`,`user_id`,`branch`,`date_issued`,`date_recieved`,`total_price`)
+    VALUES (1, '$cart_id', '$user_id', '$branch', '$time', 'null','$price')";
 
     $result = mysqli_query($conn,"SELECT * FROM `truck` WHERE available != 'no' LIMIT 1");
     $truck_id = $result->fetch_assoc()['truck_id'];
 
 
-    $sql = "INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES ('$truck_id', '$distance', '$branch', '$destination')";
+    $conn->query("INSERT INTO `trip`(`truck_id`, `distance`, `branch`, `destination`) VALUES ('$truck_id', '$distance', '$branch', '$destination')");
     // 
 
     $conn->query("UPDATE `truck` SET `available`='no' WHERE truck_id = '$truck_id'");
 
     if ($conn->query($sql) === TRUE) {
 
-        echo "New record created successfully";
+        echo "New record created successfullyyyyy";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -57,15 +58,15 @@ if ($_POST['type'] == 'getOrderId'){
     echo $currentOrderId;
 }
 
-if ($_POST['type'] == 'shopping'){
+// if ($_POST['type'] == 'shopping'){
     
-    $branch = $_POST['branch'];
-    $price = $_POST['price'];
+//     $branch = $_POST['branch'];
+//     $price = $_POST['price'];
 
-    $conn->query("INSERT INTO `shopping`(`branch`,`total_price`) VALUES ('$branch', '$price')" );
+//     $conn->query("INSERT INTO `shopping`(`branch`,`total_price`) VALUES ('$branch', '$price')" );
 
-    echo $_POST['type'];
-}
+//     echo $_POST['type'];
+// }
 
 if ($_POST['type'] == 'payment'){
     
@@ -94,37 +95,59 @@ if ($_POST['type'] == 'item'){
     $name = $_POST['item_name'];
     $price = $_POST['item_price'];
     $item_id = $_POST['item_id'];
+    $quantity = $_POST['quantity'];
+    $newCart = $_POST['newCart'];
+
+    session_start();
+    $cart_id = $_SESSION['cart_id']; 
 
 
-    $result = mysqli_query($conn,"SELECT * FROM items WHERE item_id = $item_id");
-    if ($result-> num_rows == 0) {
+    $result = mysqli_query($conn,"SELECT * FROM items ORDER BY cart_id DESC LIMIT 1");
+    $currentCartId = $result->fetch_assoc()['cart_id'];
 
-        $sql = "INSERT INTO `items`(`item_id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', 1)";
+        
+    $conn->query("INSERT INTO `items`(`item_id`, `cart_id`, `name`, `price`, `quantity`) VALUES ('$item_id', '$cart_id', '$name','$price', '$quantity')");
+       
+        
+         
+            
+    
+        
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
+    
 
-    }
 
-    else{
-        $quantity = $result->fetch_assoc()['quantity']+1;
 
-        if ($quantity-1 >= 5){
-            echo "Too many items";
-        }
-        else{
-            $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
 
-            if ($conn->query($sql) === TRUE) {
-                echo "New record created successfully";
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-        }    
-    }
+    // $result = mysqli_query($conn,"SELECT * FROM items WHERE item_id = $item_id");
+    // if ($result-> num_rows == 0) {
+
+    //     $sql = "INSERT INTO `items`(`item_id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', '$quantity')";
+
+    //     if ($conn->query($sql) === TRUE) {
+    //         echo "New record created successfully";
+    //     } else {
+    //         echo "Error: " . $sql . "<br>" . $conn->error;
+    //     }
+
+    // }
+
+    // else{
+    //     $quantity = $result->fetch_assoc()['quantity']+1;
+
+    //     if ($quantity-1 >= 5){
+    //         echo "Too many items";
+    //     }
+    //     else{
+    //         $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
+
+    //         if ($conn->query($sql) === TRUE) {
+    //             echo "New record created successfully";
+    //         } else {
+    //             echo "Error: " . $sql . "<br>" . $conn->error;
+    //         }
+    //     }    
+    // }
 }
 
 

@@ -4,21 +4,38 @@
 <title>Smart Customer Services</title>
 <link rel="stylesheet" href="shopping_cart.css">
 
+
+
 <script type="text/javascript" src="./test.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $(function () {
-        $(".item-quantity").change(function () {
-            var quantity = $(this).val();
-            var id = $(this).attr('id');
+<!-- <script type="text/javascript"> -->
+    <!-- // $(function () {
+    //     $(".item-quantity").change(function () {
+    //         var quantity = $(this).val();
+    //         var id = $(this).attr('id');
 
-            $.ajax({type:"POST", url:"updateRecord.php", data:{item_id: id, quantity: quantity}, success:function(data){
-                console.log(data);}
-            })
-        });
+    //         console.log("iuysgdiygf");
+
+            // $.ajax({type:"POST", url:"updateRecord.php", data:{item_id: id, quantity: quantity}, success:function(data){
+            //     console.log(data);}
+            // })
+    //     });
+    // }); -->
+<!-- </script> -->
+
+<script type="text/javascript">
+    window.onload = (function () {
+        populateTable()
+
+        console.log("uiysgdfgg")
+
+        localStorage.setItem("userID", <?php session_start(); $user_id = $_SESSION['user_id'];  echo $user_id ?>)
+
     });
 </script>
+
+<script type="text/javascript" src="./drag.js"></script>
 
 <body>
 
@@ -58,39 +75,14 @@
         </div>
 
         <div class="cart">
-            <?php
-            $con = mysqli_connect("localhost", "root", "", "cps630"); // Check connection
 
-                if (mysqli_connect_errno()) {
-                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                }
-                // $result = mysqli_query($con, "SELECT * FROM items");
-                $result = mysqli_query($con,"SELECT item_id, name, price, quantity FROM items GROUP BY item_id");
-                if ($result-> num_rows > 0) {
-                    echo "<div align='center'><table><tr><th>Name</th><th>Price</th><th>Quantity</th></tr>";
-                    // output data of each row
-                    $count = 1;
-                    $final_price = 0;
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr><td>".$row["name"]."</td><td>".$row["price"]*$row["quantity"]."</td><td><select name='item-quantity' class='item-quantity' id='".$row["item_id"]."'>
-                        <option value='0'>0 (Delete)</option>
-                        <option "; if($row["quantity"] == '1'){{echo"selected='selected'";}} echo" value='1'>1</option>
-                        <option "; if($row["quantity"] == '2'){{echo"selected='selected'";}} echo" value='2'>2</option>
-                        <option "; if($row["quantity"] == '3'){{echo"selected='selected'";}} echo" value='3'>3</option>
-                        <option "; if($row["quantity"] == '4'){{echo"selected='selected'";}} echo" value='4'>4</option>
-                        <option "; if($row["quantity"] == '5'){{echo"selected='selected'";}} echo" value='5'>5</option>
-                    </select></td></tr>";
-                    $count = $count +1;
-                    $final_price = $final_price+$row["price"]*$row["quantity"];
-                    }
-                    echo "<tr><td><b>Final Price</b></td><td><b id='price'>".$final_price."</b></td><td></td></tr>";
-                    echo "</table></div>";
-                } else {
-                    echo "0 results" . "<br>";
-                }
-                mysqli_close($con);
+            <div>
+                <table id="shopping-cart">
+                    <!-- <tr><th>Name</th><th>Price</th><th>Quantity</th></tr><tr> -->
+                        
+                </table>
+            </div>
 
-            ?>
         
 
             <div class="shopping-info">
@@ -135,7 +127,7 @@
   
                 <br><br>
                 
-                <input type="submit" value="Proceed to checkout" onclick="shoppingCart()">
+                <input type="submit" value="Proceed to checkout" onclick="sendPost()">
                 </form>
 
                 

@@ -25,36 +25,38 @@ while($data = $result->fetch_assoc()) {
     $price = $data['price'];
 }
 
+echo $item_id. " ". $name ." ". $price;
 
-$result = mysqli_query($conn,"SELECT * FROM items WHERE item_id = $item_id");
-if ($result-> num_rows == 0) {
 
-    $sql = "INSERT INTO `items`(`item_id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', 1)";
+// $result = mysqli_query($conn,"SELECT * FROM items WHERE item_id = $item_id");
+// if ($result-> num_rows == 0) {
 
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+//     $sql = "INSERT INTO `items`(`item_id`, `name`, `price`, `quantity`) VALUES ('$item_id','$name','$price', 1)";
 
-}
+//     if ($conn->query($sql) === TRUE) {
+//         echo "New record created successfully";
+//     } else {
+//         echo "Error: " . $sql . "<br>" . $conn->error;
+//     }
 
-else{
-    $quantity = $result->fetch_assoc()['quantity']+1;
+// }
 
-    if ($quantity-1 >= 5){
-        echo "Too many items";
-    }
-    else{
-        $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
+// else{
+//     $quantity = $result->fetch_assoc()['quantity']+1;
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-    }    
-}
+//     if ($quantity-1 >= 5){
+//         echo "Too many items";
+//     }
+//     else{
+//         $sql = "UPDATE `items` SET `quantity`='$quantity' WHERE item_id = $item_id";
+
+//         if ($conn->query($sql) === TRUE) {
+//             echo "New record created successfully";
+//         } else {
+//             echo "Error: " . $sql . "<br>" . $conn->error;
+//         }
+//     }    
+// }
 
 
 

@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <form id="signup" action="index.php" method="post">
+        <form id="signup" action="" method="post">
 
             <div id="signInField">
                 <h2>Already have an account? Sign in here.</h2>
@@ -78,6 +78,7 @@
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['address'] = $row['address'];
                     $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['cart_id'] = 1;
                     redirect("index.php");
                 }
             }
