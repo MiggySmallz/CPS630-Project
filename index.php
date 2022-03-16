@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE php>
 <php lang="en">
 <meta charset="UTF-8">
@@ -39,7 +41,8 @@
         session_start();
         if ($_SESSION['login_id'] !== 'admin' && $_SESSION['password'] !== 'admin') {
             echo 'style="display:none;"'; 
-        } 
+        }
+
         ?>>
         <button class="dropbtn">DB Maintain</button>
         <div class="dropdown-content">
@@ -49,11 +52,13 @@
             <a href="update.php">Update</a>
         </div>
     </div>
-
-    <form class="searchBar" action="" method='post'>
-        <input type="text" placeholder="Search.." name="search">
-        <button type="submit" name="submit">Search</button>
+    
+    <form class="searchBar" onsubmit="addedItemNotification()" method='post'>
+        <input type="text" placeholder="Search for specific order..." name="search">
+        <button type="submit" name="submit">Load</button>
     </form>
+
+    <button type="submit" name="submit" onclick="addedItemNotification()">Search</button>
 
     <div>
         <a href="logout.php">Log Out</a>
@@ -170,11 +175,39 @@
     <div class="max-items">
         <h4 style="color: white; text-align: center;">Max quantity is 5 items</h4>
     </div>
-</div>
 
+</div>
 
 </body>
 </php>
+
+<?php 
+    if (isset($_POST['submit'])) {
+        $search = $_POST['search'];
+        $sql = "SELECT * FROM orders WHERE order_id=$search";
+        $result = mysqli_query($connect, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            if ($row['order_id'] !== '0000-00-00 00:00:0') {
+                echo "<div class='bottomright'>";
+                echo "<h4 style='color: white; text-align: center;'>That order is not done</h4>";
+                echo "</div>";
+            }
+            else {
+                echo "<div class='bottomright'>";
+                echo "<h4 style='color: white; text-align: center;'>That order is done</h4>";
+                echo "</div>";
+            }
+        }
+        else {
+            echo "<div class='bottomright'>";
+            echo "<h4 style='color: white; text-align: center;'>That order does not exist</h4>";
+            echo "</div>";
+        }
+    }
+?>
+
 
 
 

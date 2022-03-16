@@ -54,6 +54,14 @@ function payment(){
   })
 }
 
+function addedItemNotification(){
+  $('.bottomright').fadeIn(function() {
+    window.setTimeout(function() {
+      $('.bottomright').fadeOut('slow');
+    }, 1500);
+  }); return false;
+}
+
 
 
 
