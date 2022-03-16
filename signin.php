@@ -52,6 +52,7 @@
                     $_SESSION['password'] = $row['password'];
                     $_SESSION['address'] = $row['address'];
                     $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['cart_id'] = 1;
                     redirect("index.php");
                 }
             }
