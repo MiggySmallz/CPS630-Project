@@ -39,8 +39,8 @@
           <img src="pic/blank-profile-picture.png" style="width:100%">
           <div class="container">
             <h2>Miguel Nobre</h2>
-            <p>lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem.</p>
-            <p class="title">test@email.com</p>
+            <p>Full-Stack Developer for this website. Responsible for creating the Shopping Cart and Maps.</p>
+            <p class="title">miggytest@gmail.com</p>
             <p class="title">123-456-7890</p>
           </div>
         </div>
@@ -51,9 +51,9 @@
             <img src="pic/blank-profile-picture.png" style="width:100%">
             <div class="container">
               <h2>Xing Wu</h2>
-              <p>lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem.</p>
-              <p class="title">test@email.com</p>
-              <p class="title">123-456-7890</p>
+              <p>Full-Stack Developer who was responsible for creating the signup/signin system along with the admin features such as DB maintain.</p>
+              <p class="title">xingy.60@gmail.com</p>
+              <p class="title">123-456-7888</p>
             </div>
           </div>
       </div>
@@ -63,8 +63,8 @@
             <img src="pic/blank-profile-picture.png" style="width:100%">
             <div class="container">
               <h2>Jason Zhu</h2>
-              <p>lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem lorem ipsum ipsum lorem.</p>
-              <p class="title">test@email.com</p>
+              <p>Full-Stack Developer responsible for creating the search bar, contact page and the front-end portion of the DB maintain forms.</p>
+              <p class="title">jason123@gmail.com</p>
               <p class="title">123-456-7890</p>
             </div>
           </div>
