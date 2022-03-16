@@ -42,7 +42,7 @@
                 <h2>Please enter your credit card info</h2>
                 <label>Credit Card Number:</label> <input type="text" name="cc_num" id="cc_num" required><br>
                 <label>CVV: </label> <input type="password" name="cvv" id="cvv" required><br>
-                <button style="font-size: 20px" onclick="payment(),  window.location.href='./thank_you.php'">Sumbit</button>
+                <button style="font-size: 20px" onclick="payment(),  window.location.href='./thank_you.php'">Submit</button>
             </div>
             
 

@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -31,45 +33,17 @@
 </html>
 
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "cps630";
-
-    $connect = mysqli_connect($servername, $username, $password);
-    $connect->query("CREATE DATABASE IF NOT EXISTS cps630;");
-    $connect->close();
-
-    // Create connection
-    $connect = mysqli_connect($servername, $username, $password, $database);
-    // Check connection
-    if (!$connect) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-    //echo "Connected successfully" . "<br>";
-
     session_start(); 
-?>
 
-<?php 
+    require __DIR__ . './functions.php';
+
     if (isset($_POST['signUp'])) {
-        function validate($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
 
         $login_id = validate($_POST['login_id']);
         $password = validate($_POST['password']);
 
         $sql = "SELECT * FROM users WHERE login_id='$login_id' AND password='$password'";
         $result = mysqli_query($connect, $sql);
-
-        function redirect($url, $permanent = false) {
-            if (headers_sent() === false) header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
-            exit();
-        }
 
         if (mysqli_num_rows($result) === 1) {
             while ($row = $result -> fetch_assoc()) {
