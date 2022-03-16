@@ -68,9 +68,27 @@
         <a href="logout.php">Log Out</a>
     </div>
 </div>
+</div>
+
+<div class="bottomright">
+    <?php
+        require __DIR__ . './functions.php';
+        if (isset($_POST['submit'])) {
+            $item = $_POST['item'];
+            $result = $connect -> query("SELECT * from orders WHERE order_id=$item;");
+            if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+                echo "Order ID: " . $row["order_id"] . "<br>Trip ID: " . $row["trip_id"] . "<br>receipt ID: "
+                . $row["receipt_id"] . "<br>User ID: " . $row["user_id"] . "<br>Branch: " . $row["branch"]
+                . "<br>Date Issued: " . $row["date_issued"] . "<br>Date Received: " . $row["date_recieved"]
+                . "<br>Total Price: " . $row["total_price"];
+            }
+            else echo "No entry found.";
+        }
+    ?>
+</div>
 
 <div class="container">
-    
     <div class = "container2">
         <div class="item-list-parent" id="flex-child">
             <div>
@@ -181,6 +199,7 @@
     </div>
 
 </div>
+
 
 </body>
 </php>

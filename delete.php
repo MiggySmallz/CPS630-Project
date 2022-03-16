@@ -63,7 +63,6 @@
           <option value="users">Users</option>
           <option value="trip">Trip</option>
           <option value="truck">Truck</option>
-          <option value="shopping">Shopping</option>
           <option value="stock">Stock</option>
           <option value="payment">Payment</option>
         </select>
@@ -109,12 +108,6 @@
             $item = $_POST['item'];
             echo "<br>" . "Deleted from Table " . $_POST['table'];
             $connect -> query("DELETE from truck WHERE truck_id=$item;");
-        }
-    
-        if ($_POST['table'] === 'shopping') {
-            $item = $_POST['item'];
-            echo "<br>" . "Deleted from Table " . $_POST['table'];
-            $connect -> query("DELETE from shopping WHERE receipt_id=$item;");
         }
     
         if ($_POST['table'] === 'stock') {
