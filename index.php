@@ -1,3 +1,5 @@
+<?php include 'dbconnect.php' ?>
+
 <!DOCTYPE php>
 <php lang="en">
 <meta charset="UTF-8">
@@ -49,13 +51,37 @@
             <a href="update.php">Update</a>
         </div>
     </div>
+    <div class="search-container">
+    <form action="" method="post">
+       <input type="text" id="item" name="item"><br>
+       <button onclick="addedItemNotification()" type="submit" name="submit" class="search-button">Submit</button>
+    </form>
+    </div>
     <div>
         <a href="logout.php">Log Out</a>
     </div>
 </div>
+</div>
+
+<div class="bottomright">
+    <?php
+        require __DIR__ . './functions.php';
+        if (isset($_POST['submit'])) {
+            $item = $_POST['item'];
+            $result = $connect -> query("SELECT * from orders WHERE order_id=$item;");
+            if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+                echo "Order ID: " . $row["order_id"] . "<br>Trip ID: " . $row["trip_id"] . "<br>receipt ID: "
+                . $row["receipt_id"] . "<br>User ID: " . $row["user_id"] . "<br>Branch: " . $row["branch"]
+                . "<br>Date Issued: " . $row["date_issued"] . "<br>Date Received: " . $row["date_recieved"]
+                . "<br>Total Price: " . $row["total_price"];
+            }
+            else echo "No entry found.";
+        }
+    ?>
+</div>
 
 <div class="container">
-    
     <div class = "container2">
         <div class="item-list-parent" id="flex-child">
             <div>
@@ -164,11 +190,21 @@
     <div class="max-items">
         <h4 style="color: white; text-align: center;">Max quantity is 5 items</h4>
     </div>
+    
 </div>
+
 
 
 </body>
 </php>
-
+<script>
+    function addedItemNotification(){
+  $('.bottomleft').fadeIn(function() {
+    window.setTimeout(function() {
+      $('.bottomleft').fadeOut('slow');
+    }, 1500);
+  });
+}
+</script>
 
 
